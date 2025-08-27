@@ -1,64 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
+interface NewsArticle {
+  id: number;
+  title: string;
+  summary: string;
+  category: string;
+  time: string;
+  image: string;
+  hot: boolean;
+}
+
 export default function NewsPage() {
-  const newsArticles = [
-    {
-      id: 1,
-      title: '美国经济持续增长，就业率创历史新高',
-      summary: '最新数据显示，美国第三季度GDP增长2.8%，失业率降至3.2%，创下50年来最低纪录。',
-      category: '经济',
-      time: '2小时前',
-      image: '📈',
-      hot: true
-    },
-    {
-      id: 2,
-      title: '硅谷科技巨头推出革命性AI技术',
-      summary: '苹果、谷歌等公司联合发布新一代人工智能平台，预计将改变整个科技行业格局。',
-      category: '科技',
-      time: '4小时前',
-      image: '🤖',
-      hot: true
-    },
-    {
-      id: 3,
-      title: '美国房地产市场迎来投资热潮',
-      summary: '多个州的房价持续上涨，投资者纷纷涌入市场，豪华住宅需求量激增。',
-      category: '房产',
-      time: '6小时前',
-      image: '🏠',
-      hot: false
-    },
-    {
-      id: 4,
-      title: '华尔街股市再创新高，投资者信心大增',
-      summary: '道琼斯指数突破历史记录，纳斯达克科技股强势上涨，市场表现超出预期。',
-      category: '金融',
-      time: '8小时前',
-      image: '💹',
-      hot: false
-    },
-    {
-      id: 5,
-      title: '美国新能源汽车销量暴涨300%',
-      summary: '特斯拉等电动车品牌销量创记录，政府新能源政策推动行业快速发展。',
-      category: '汽车',
-      time: '10小时前',
-      image: '🚗',
-      hot: false
-    },
-    {
-      id: 6,
-      title: '美国航空业复苏，私人飞机订单激增',
-      summary: '疫情后航空业强势反弹，私人飞机制造商订单排期已延至明年年底。',
-      category: '航空',
-      time: '12小时前',
-      image: '✈️',
-      hot: false
-    }
-  ];
+  const [newsArticles, setNewsArticles] = useState<NewsArticle[]>([]);
+
+  useEffect(() => {
+    fetch('/api/news')
+      .then((res) => res.json())
+      .then((data) => setNewsArticles(data));
+  }, []);
 
   const categories = ['全部', '经济', '科技', '房产', '金融', '汽车', '航空'];
 

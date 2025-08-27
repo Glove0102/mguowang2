@@ -15,6 +15,8 @@ import AircraftPage from "@/pages/AircraftPage";
 import DatingPage from "@/pages/DatingPage";
 import StockTradingPage from "@/pages/StockTradingPage";
 import LotteryPage from "@/pages/LotteryPage";
+import AdminPage from "@/pages/AdminPage";
+import CreatorPage from "@/pages/CreatorPage";
 import { TopProgressBar } from "@/components/TopProgressBar";
 import { BottomNavigation } from "@/components/BottomNavigation";
 
@@ -39,6 +41,8 @@ function AuthenticatedApp() {
           <Route path="/dating" component={DatingPage} />
           <Route path="/stocks" component={StockTradingPage} />
           <Route path="/lottery" component={LotteryPage} />
+          <Route path="/creators" component={CreatorPage} />
+          <Route path="/admin" component={AdminPage} />
           <Route component={NotFound} />
         </Switch>
       </div>

@@ -50,6 +50,24 @@ export const datingMessages = pgTable("dating_messages", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+export const creators = pgTable("creators", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  name: text("name").notNull(),
+  avatarUrl: text("avatar_url"),
+  bio: text("bio"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const creatorPosts = pgTable("creator_posts", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  creatorId: varchar("creator_id").notNull().references(() => creators.id),
+  title: text("title").notNull(),
+  content: text("content").notNull(),
+  isPaid: boolean("is_paid").notNull().default(false),
+  cost: integer("cost").notNull().default(0), // in dollars
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
   password: true,
@@ -75,6 +93,16 @@ export const insertDatingMessageSchema = createInsertSchema(datingMessages).omit
   createdAt: true,
 });
 
+export const insertCreatorSchema = createInsertSchema(creators).omit({
+  id: true,
+  createdAt: true,
+});
+
+export const insertCreatorPostSchema = createInsertSchema(creatorPosts).omit({
+  id: true,
+  createdAt: true,
+});
+
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
 export type InsertActivity = z.infer<typeof insertActivitySchema>;
@@ -85,3 +113,7 @@ export type InsertStockPortfolio = z.infer<typeof insertStockPortfolioSchema>;
 export type StockPortfolio = typeof stockPortfolio.$inferSelect;
 export type InsertDatingMessage = z.infer<typeof insertDatingMessageSchema>;
 export type DatingMessage = typeof datingMessages.$inferSelect;
+export type InsertCreator = z.infer<typeof insertCreatorSchema>;
+export type Creator = typeof creators.$inferSelect;
+export type InsertCreatorPost = z.infer<typeof insertCreatorPostSchema>;
+export type CreatorPost = typeof creatorPosts.$inferSelect;

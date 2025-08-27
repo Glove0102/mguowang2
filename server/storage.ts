@@ -4,6 +4,8 @@ import {
   lotteryTickets, 
   stockPortfolio, 
   datingMessages,
+  creators,
+  creatorPosts,
   type User, 
   type InsertUser,
   type Activity,
@@ -13,7 +15,11 @@ import {
   type StockPortfolio,
   type InsertStockPortfolio,
   type DatingMessage,
-  type InsertDatingMessage
+  type InsertDatingMessage,
+  type Creator,
+  type InsertCreator,
+  type CreatorPost,
+  type InsertCreatorPost
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, desc, and } from "drizzle-orm";
@@ -41,6 +47,12 @@ export interface IStorage {
   // Dating message operations
   createDatingMessage(message: InsertDatingMessage): Promise<DatingMessage>;
   getDatingMessages(userId: string, profileId: string): Promise<DatingMessage[]>;
+
+  // Creator operations
+  getCreators(): Promise<Creator[]>;
+  createCreator(creator: InsertCreator): Promise<Creator>;
+  getCreatorPosts(): Promise<CreatorPost[]>;
+  createCreatorPost(post: InsertCreatorPost): Promise<CreatorPost>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -151,6 +163,30 @@ export class DatabaseStorage implements IStorage {
         eq(datingMessages.profileId, profileId)
       ))
       .orderBy(datingMessages.createdAt);
+  }
+
+  async getCreators(): Promise<Creator[]> {
+    return await db.select().from(creators).orderBy(desc(creators.createdAt));
+  }
+
+  async createCreator(insertCreator: InsertCreator): Promise<Creator> {
+    const [creator] = await db
+      .insert(creators)
+      .values(insertCreator)
+      .returning();
+    return creator;
+  }
+
+  async createCreatorPost(insertPost: InsertCreatorPost): Promise<CreatorPost> {
+    const [post] = await db
+      .insert(creatorPosts)
+      .values(insertPost)
+      .returning();
+    return post;
+  }
+
+  async getCreatorPosts(): Promise<CreatorPost[]> {
+    return await db.select().from(creatorPosts).orderBy(desc(creatorPosts.createdAt));
   }
 }
 
