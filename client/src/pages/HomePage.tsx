@@ -219,6 +219,17 @@ export default function HomePage() {
               onClick={() => handleServiceClick('/betting', 20, 15, 'betting_visit', '访问体育博彩')}
               testId="card-betting"
             />
+            <ServiceCard
+              icon="fas fa-truck"
+              title="Truck Driving Simulator"
+              description="卡车驾驶"
+              badge="点击游戏"
+              badgeColor="blue"
+              bgColor="bg-blue-100"
+              iconColor="text-blue-600"
+              onClick={() => handleServiceClick('/trucking', 10, 5, 'trucking_visit', '访问卡车驾驶')}
+              testId="card-trucking"
+            />
           </div>
         </div>
 
