@@ -3,105 +3,23 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { useQuery } from '@tanstack/react-query';
 
 export default function AircraftPage() {
   const [selectedCategory, setSelectedCategory] = useState('全部');
   const { toast } = useToast();
 
-  const categories = ['全部', '私人飞机', '商务机', '直升机', '轻型飞机', '豪华客机'];
-
-  const aircraft = [
-    {
-      id: 1,
-      name: 'Gulfstream G650ER',
-      category: '私人飞机',
-      price: 70000000,
-      image: '✈️',
-      description: '世界顶级超远程商务机，奢华与性能的完美结合',
-      specs: ['航程: 7,500海里', '最高速度: 马赫0.925', '客舱高度: 4,100英尺', '最多乘客: 19人'],
-      features: ['全尺寸厨房', '主卧套房', '会议区域', '卫星通信', 'WiFi'],
-      year: 2023,
-      hours: 150,
-      rating: 4.9,
-      hot: true,
-      certified: true
-    },
-    {
-      id: 2,
-      name: 'Bombardier Global 7500',
-      category: '商务机',
-      price: 72500000,
-      image: '✈️',
-      description: '超长航程旗舰商务机，四个独立生活区域',
-      specs: ['航程: 7,700海里', '最高速度: 马赫0.925', '客舱高度: 4,850英尺', '最多乘客: 17人'],
-      features: ['全尺寸床铺', '独立淋浴间', '娱乐套房', '厨师厨房', '24/7管家服务'],
-      year: 2022,
-      hours: 280,
-      rating: 4.8,
-      hot: true,
-      certified: true
-    },
-    {
-      id: 3,
-      name: 'Cessna Citation X+',
-      category: '轻型飞机',
-      price: 23000000,
-      image: '✈️',
-      description: '世界最快的民用飞机，极速商务出行',
-      specs: ['航程: 3,460海里', '最高速度: 马赫0.935', '客舱高度: 5,800英尺', '最多乘客: 10人'],
-      features: ['高速巡航', '先进航电', '舒适座椅', '行李舱', '降噪技术'],
-      year: 2021,
-      hours: 450,
-      rating: 4.7,
-      hot: false,
-      certified: true
-    },
-    {
-      id: 4,
-      name: 'Airbus ACH160',
-      category: '直升机',
-      price: 17000000,
-      image: '🚁',
-      description: '最新一代豪华直升机，城市通勤首选',
-      specs: ['航程: 460海里', '最高速度: 180节', '客舱容积: 6.8立方米', '最多乘客: 8人'],
-      features: ['全景天窗', '降噪技术', '豪华内饰', '双发动机', 'IFR认证'],
-      year: 2023,
-      hours: 80,
-      rating: 4.8,
-      hot: false,
-      certified: true
-    },
-    {
-      id: 5,
-      name: 'Boeing Business Jet MAX',
-      category: '豪华客机',
-      price: 100000000,
-      image: '✈️',
-      description: '基于737 MAX的私人客机，私人航空顶级之选',
-      specs: ['航程: 6,640海里', '最高速度: 马赫0.82', '客舱面积: 1,025平方英尺', '最多乘客: 25人'],
-      features: ['主卧室', '会议室', '娱乐区', '全尺寸厨房', '私人办公室'],
-      year: 2023,
-      hours: 200,
-      rating: 4.9,
-      hot: true,
-      certified: true
-    },
-    {
-      id: 6,
-      name: 'Embraer Phenom 300E',
-      category: '轻型飞机',
-      price: 9500000,
-      image: '✈️',
-      description: '轻型喷气机中的佼佼者，经济实用的商务选择',
-      specs: ['航程: 2,010海里', '最高速度: 464节', '客舱高度: 4,000英尺', '最多乘客: 9人'],
-      features: ['大行李舱', '先进航电', 'LED照明', '快速充电', '经济油耗'],
-      year: 2020,
-      hours: 680,
-      rating: 4.6,
-      hot: false,
-      certified: true
+  const { data: aircraftData, isLoading } = useQuery({
+    queryKey: ['/api/aircraft'],
+    queryFn: async () => {
+      const response = await fetch('/api/aircraft');
+      if (!response.ok) throw new Error('获取飞机数据失败');
+      return response.json();
     }
-  ];
+  });
+
+  const aircraft = aircraftData?.aircraft || [];
+  const categories = ['全部', '私人飞机', '商务机', '直升机', '轻型飞机', '豪华客机'];
 
   const filteredAircraft = selectedCategory === '全部' 
     ? aircraft 
@@ -205,9 +123,18 @@ export default function AircraftPage() {
         </CardContent>
       </Card>
 
+      {/* Loading State */}
+      {isLoading && (
+        <div className="text-center py-8">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">正在加载飞机数据...</p>
+        </div>
+      )}
+
       {/* Aircraft Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {filteredAircraft.map((item) => (
+      {!isLoading && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {filteredAircraft.map((item: any) => (
           <Card 
             key={item.id} 
             className="hover:shadow-xl transition-shadow group"
@@ -260,7 +187,7 @@ export default function AircraftPage() {
               <div className="mb-4">
                 <h4 className="text-sm font-medium mb-2">技术规格：</h4>
                 <div className="space-y-1">
-                  {item.specs.map((spec, index) => (
+                  {item.specs?.map((spec: string, index: number) => (
                     <div key={index} className="text-xs text-muted-foreground flex items-center">
                       <i className="fas fa-cog text-primary mr-2"></i>
                       {spec}
@@ -273,14 +200,14 @@ export default function AircraftPage() {
               <div className="mb-4">
                 <h4 className="text-sm font-medium mb-2">奢华配置：</h4>
                 <div className="flex flex-wrap gap-1">
-                  {item.features.slice(0, 3).map((feature, index) => (
+                  {item.features?.slice(0, 3).map((feature: string, index: number) => (
                     <Badge key={index} variant="outline" className="text-xs">
                       {feature}
                     </Badge>
                   ))}
-                  {item.features.length > 3 && (
+                  {item.features?.length > 3 && (
                     <Badge variant="outline" className="text-xs">
-                      +{item.features.length - 3} 更多
+                      +{item.features?.length - 3} 更多
                     </Badge>
                   )}
                 </div>
@@ -319,7 +246,8 @@ export default function AircraftPage() {
             </CardContent>
           </Card>
         ))}
-      </div>
+        </div>
+      )}
 
       {/* Aviation Services */}
       <Card>

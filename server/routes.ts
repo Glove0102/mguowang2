@@ -54,6 +54,34 @@ async function readSportsFile() {
   return JSON.parse(data);
 }
 
+// Helper function to read guns data
+async function readGunsFile() {
+  const filePath = path.join(process.cwd(), 'data', 'guns.json');
+  const data = await fs.readFile(filePath, 'utf-8');
+  return JSON.parse(data);
+}
+
+// Helper function to read aircraft data
+async function readAircraftFile() {
+  const filePath = path.join(process.cwd(), 'data', 'aircraft.json');
+  const data = await fs.readFile(filePath, 'utf-8');
+  return JSON.parse(data);
+}
+
+// Helper function to read houses data
+async function readHousesFile() {
+  const filePath = path.join(process.cwd(), 'data', 'houses.json');
+  const data = await fs.readFile(filePath, 'utf-8');
+  return JSON.parse(data);
+}
+
+// Helper function to read dating profiles data
+async function readDatingProfilesFile() {
+  const filePath = path.join(process.cwd(), 'data', 'dating-profiles.json');
+  const data = await fs.readFile(filePath, 'utf-8');
+  return JSON.parse(data);
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Authentication
   app.post("/api/auth/login", async (req, res) => {
@@ -127,6 +155,46 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(sports);
     } catch (error) {
       res.status(500).json({ message: "获取体育赛事失败" });
+    }
+  });
+
+  // Serve guns data
+  app.get("/api/guns", async (req, res) => {
+    try {
+      const guns = await readGunsFile();
+      res.json(guns);
+    } catch (error) {
+      res.status(500).json({ message: "获取枪械信息失败" });
+    }
+  });
+
+  // Serve aircraft data
+  app.get("/api/aircraft", async (req, res) => {
+    try {
+      const aircraft = await readAircraftFile();
+      res.json(aircraft);
+    } catch (error) {
+      res.status(500).json({ message: "获取飞机信息失败" });
+    }
+  });
+
+  // Serve houses data
+  app.get("/api/houses", async (req, res) => {
+    try {
+      const houses = await readHousesFile();
+      res.json(houses);
+    } catch (error) {
+      res.status(500).json({ message: "获取房产信息失败" });
+    }
+  });
+
+  // Serve dating profiles data
+  app.get("/api/dating-profiles", async (req, res) => {
+    try {
+      const profiles = await readDatingProfilesFile();
+      res.json(profiles);
+    } catch (error) {
+      res.status(500).json({ message: "获取约会档案失败" });
     }
   });
 

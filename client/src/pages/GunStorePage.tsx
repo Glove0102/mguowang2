@@ -3,99 +3,23 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { useQuery } from '@tanstack/react-query';
 
 export default function GunStorePage() {
   const [selectedCategory, setSelectedCategory] = useState('全部');
   const { toast } = useToast();
 
-  const categories = ['全部', '手枪', '步枪', '霰弹枪', '配件', '弹药'];
-
-  const products = [
-    {
-      id: 1,
-      name: 'Glock 19 Gen5',
-      category: '手枪',
-      price: 599,
-      originalPrice: 699,
-      image: '🔫',
-      description: '可靠性极高的执法用枪，适合自卫和射击运动',
-      features: ['9mm口径', '15发弹夹', '聚合物框架', '原厂保修'],
-      rating: 4.9,
-      reviews: 2847,
-      inStock: true,
-      hot: true
-    },
-    {
-      id: 2,
-      name: 'AR-15 Sport II',
-      category: '步枪',
-      price: 899,
-      originalPrice: 1099,
-      image: '🔫',
-      description: '美国最受欢迎的现代运动步枪，模块化设计',
-      features: ['5.56/.223口径', '30发弹夹', '可调节枪托', '皮卡汀尼导轨'],
-      rating: 4.8,
-      reviews: 1923,
-      inStock: true,
-      hot: true
-    },
-    {
-      id: 3,
-      name: 'Remington 870',
-      category: '霰弹枪',
-      price: 449,
-      originalPrice: 549,
-      image: '🔫',
-      description: '经典泵动式霰弹枪，狩猎和家庭防卫首选',
-      features: ['12号霰弹', '4+1发装填', '钢制机身', '木质枪托'],
-      rating: 4.7,
-      reviews: 1456,
-      inStock: true,
-      hot: false
-    },
-    {
-      id: 4,
-      name: 'Sig Sauer P320',
-      category: '手枪',
-      price: 679,
-      originalPrice: 749,
-      image: '🔫',
-      description: '模块化手枪系统，军警采用',
-      features: ['9mm口径', '17发弹夹', '模块化设计', '击针保险'],
-      rating: 4.8,
-      reviews: 987,
-      inStock: false,
-      hot: false
-    },
-    {
-      id: 5,
-      name: '瞄准镜套装',
-      category: '配件',
-      price: 299,
-      originalPrice: 399,
-      image: '🔭',
-      description: '高精度光学瞄准镜，适合长距离射击',
-      features: ['4-16x倍率', '50mm物镜', '防水防雾', '氮气填充'],
-      rating: 4.6,
-      reviews: 654,
-      inStock: true,
-      hot: false
-    },
-    {
-      id: 6,
-      name: '9mm弹药箱',
-      category: '弹药',
-      price: 89,
-      originalPrice: 109,
-      image: '📦',
-      description: '高质量训练弹药，500发装',
-      features: ['FMJ全金属弹头', '115格令', '黄铜弹壳', '工厂装填'],
-      rating: 4.5,
-      reviews: 432,
-      inStock: true,
-      hot: false
+  const { data: gunsData, isLoading } = useQuery({
+    queryKey: ['/api/guns'],
+    queryFn: async () => {
+      const response = await fetch('/api/guns');
+      if (!response.ok) throw new Error('获取枪械数据失败');
+      return response.json();
     }
-  ];
+  });
+
+  const products = gunsData?.products || [];
+  const categories = ['全部', '手枪', '步枪', '霰弹枪', '配件', '弹药'];
 
   const filteredProducts = selectedCategory === '全部' 
     ? products 
@@ -182,9 +106,18 @@ export default function GunStorePage() {
         </CardContent>
       </Card>
 
+      {/* Loading State */}
+      {isLoading && (
+        <div className="text-center py-8">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">正在加载枪械数据...</p>
+        </div>
+      )}
+
       {/* Products Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredProducts.map((product) => (
+      {!isLoading && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProducts.map((product: any) => (
           <Card 
             key={product.id} 
             className="hover:shadow-lg transition-shadow"
@@ -218,7 +151,7 @@ export default function GunStorePage() {
               <div className="mb-4">
                 <h4 className="text-sm font-medium mb-2">产品特点：</h4>
                 <ul className="text-xs text-muted-foreground space-y-1">
-                  {product.features.map((feature, index) => (
+                  {product.features?.map((feature: string, index: number) => (
                     <li key={index} className="flex items-center">
                       <i className="fas fa-check text-green-600 mr-2"></i>
                       {feature}
@@ -270,7 +203,8 @@ export default function GunStorePage() {
             </CardContent>
           </Card>
         ))}
-      </div>
+        </div>
+      )}
 
       {/* Store Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">

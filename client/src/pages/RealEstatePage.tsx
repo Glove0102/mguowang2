@@ -3,105 +3,23 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { useQuery } from '@tanstack/react-query';
 
 export default function RealEstatePage() {
   const [selectedType, setSelectedType] = useState('全部');
   const { toast } = useToast();
 
-  const propertyTypes = ['全部', '豪华别墅', '海景房', '市中心公寓', '牧场农庄', '投资物业'];
-
-  const properties = [
-    {
-      id: 1,
-      title: '比佛利山庄豪华别墅',
-      type: '豪华别墅',
-      price: 12500000,
-      address: '比佛利山庄, 加利福尼亚',
-      bedrooms: 8,
-      bathrooms: 10,
-      sqft: 15000,
-      image: '🏰',
-      description: '坐落在比佛利山庄核心地段的超级豪华别墅，享有洛杉矶全景',
-      features: ['私人游泳池', '酒窖', '家庭影院', '健身房', '佣人房'],
-      hot: true,
-      virtual_tour: true
-    },
-    {
-      id: 2,
-      title: '马里布海景别墅',
-      type: '海景房',
-      price: 8900000,
-      address: '马里布, 加利福尼亚',
-      bedrooms: 6,
-      bathrooms: 7,
-      sqft: 8500,
-      image: '🏖️',
-      description: '直面太平洋的豪华海景别墅，私人海滩通道',
-      features: ['私人海滩', '无边泳池', '海景阳台', '现代厨房', '智能家居'],
-      hot: true,
-      virtual_tour: true
-    },
-    {
-      id: 3,
-      title: '曼哈顿顶层公寓',
-      type: '市中心公寓',
-      price: 15000000,
-      address: '曼哈顿, 纽约',
-      bedrooms: 4,
-      bathrooms: 5,
-      sqft: 4500,
-      image: '🏙️',
-      description: '曼哈顿上东区顶层奢华公寓，360度城市全景',
-      features: ['中央公园景观', '私人电梯', '大理石装修', '24小时门卫', '健身中心'],
-      hot: false,
-      virtual_tour: true
-    },
-    {
-      id: 4,
-      title: '德州大型牧场',
-      type: '牧场农庄',
-      price: 5500000,
-      address: '奥斯汀, 德克萨斯',
-      bedrooms: 12,
-      bathrooms: 8,
-      sqft: 25000,
-      image: '🐎',
-      description: '占地2000英亩的大型牧场，包含马厩和牛棚',
-      features: ['2000英亩土地', '马厩设施', '牛棚', '私人湖泊', '狩猎区域'],
-      hot: false,
-      virtual_tour: false
-    },
-    {
-      id: 5,
-      title: '迈阿密投资公寓楼',
-      type: '投资物业',
-      price: 25000000,
-      address: '迈阿密, 佛罗里达',
-      bedrooms: 60,
-      bathrooms: 60,
-      sqft: 85000,
-      image: '🏢',
-      description: '20层高档公寓楼，30套豪华单元，年收益率8%',
-      features: ['30套公寓单元', '年收益8%', '海景位置', '游泳池', '健身设施'],
-      hot: true,
-      virtual_tour: true
-    },
-    {
-      id: 6,
-      title: '阿斯彭滑雪别墅',
-      type: '豪华别墅',
-      price: 18000000,
-      address: '阿斯彭, 科罗拉多',
-      bedrooms: 10,
-      bathrooms: 12,
-      sqft: 12000,
-      image: '🎿',
-      description: '世界顶级滑雪度假村旁的奢华山景别墅',
-      features: ['滑雪场直达', '温泉浴池', '壁炉', '山景阳台', '滑雪器材室'],
-      hot: false,
-      virtual_tour: true
+  const { data: housesData, isLoading } = useQuery({
+    queryKey: ['/api/houses'],
+    queryFn: async () => {
+      const response = await fetch('/api/houses');
+      if (!response.ok) throw new Error('获取房产数据失败');
+      return response.json();
     }
-  ];
+  });
+
+  const properties = housesData?.properties || [];
+  const propertyTypes = ['全部', '豪华别墅', '海景房', '市中心公寓', '牧场农庄', '投资物业'];
 
   const filteredProperties = selectedType === '全部' 
     ? properties 
@@ -182,10 +100,19 @@ export default function RealEstatePage() {
         ))}
       </div>
 
+      {/* Loading State */}
+      {isLoading && (
+        <div className="text-center py-8">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">正在加载房产数据...</p>
+        </div>
+      )}
+
       {/* Properties Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {filteredProperties.map((property) => (
-          <Card 
+      {!isLoading && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {filteredProperties.map((property: any) => (
+            <Card 
             key={property.id} 
             className="hover:shadow-xl transition-shadow group"
             data-testid={`card-property-${property.id}`}
@@ -247,14 +174,14 @@ export default function RealEstatePage() {
               <div className="mb-4">
                 <h4 className="text-sm font-medium mb-2">特色配置：</h4>
                 <div className="flex flex-wrap gap-1">
-                  {property.features.slice(0, 3).map((feature, index) => (
+                  {property.features?.slice(0, 3).map((feature: string, index: number) => (
                     <Badge key={index} variant="outline" className="text-xs">
                       {feature}
                     </Badge>
                   ))}
-                  {property.features.length > 3 && (
+                  {property.features?.length > 3 && (
                     <Badge variant="outline" className="text-xs">
-                      +{property.features.length - 3} 更多
+                      +{property.features?.length - 3} 更多
                     </Badge>
                   )}
                 </div>
@@ -283,8 +210,9 @@ export default function RealEstatePage() {
               </div>
             </CardContent>
           </Card>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       {/* Real Estate Services */}
       <Card>

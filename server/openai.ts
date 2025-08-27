@@ -19,7 +19,7 @@ export async function generateChatResponse(message: string, profileName: string)
           content: message
         }
       ],
-      max_tokens: 100,
+      max_completion_tokens: 100,
       temperature: 0.8
     });
 
@@ -44,7 +44,7 @@ export async function generateNewsContent(topic: string): Promise<string> {
           content: `请为以下主题写一篇简短的新闻：${topic}`
         }
       ],
-      max_tokens: 300
+      max_completion_tokens: 300
     });
 
     return response.choices[0].message.content || "暂无相关新闻内容";

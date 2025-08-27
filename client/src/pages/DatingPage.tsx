@@ -13,86 +13,16 @@ export default function DatingPage() {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  const profiles = [
-    {
-      id: 'jessica',
-      name: 'Jessica',
-      age: 26,
-      location: '洛杉矶, CA',
-      occupation: '时尚设计师',
-      image: '👩‍🦰',
-      description: '热爱艺术和旅行，寻找真诚的另一半',
-      interests: ['艺术', '旅行', '美食', '健身', '音乐'],
-      online: true,
-      verified: true,
-      premium: true
-    },
-    {
-      id: 'amanda',
-      name: 'Amanda',
-      age: 28,
-      location: '纽约, NY',
-      occupation: '金融分析师',
-      image: '👩‍💼',
-      description: '独立自信的职场女性，喜欢探索新事物',
-      interests: ['投资', '瑜伽', '葡萄酒', '读书', '烹饪'],
-      online: true,
-      verified: true,
-      premium: false
-    },
-    {
-      id: 'sophia',
-      name: 'Sophia',
-      age: 24,
-      location: '迈阿密, FL',
-      occupation: '模特',
-      image: '👩‍🦱',
-      description: '阳光开朗，享受海滩生活和户外运动',
-      interests: ['健身', '海滩', '摄影', '舞蹈', '冲浪'],
-      online: false,
-      verified: true,
-      premium: true
-    },
-    {
-      id: 'emily',
-      name: 'Emily',
-      age: 29,
-      location: '西雅图, WA',
-      occupation: '软件工程师',
-      image: '👩‍💻',
-      description: '科技爱好者，热衷于创新和学习',
-      interests: ['编程', '游戏', '咖啡', '徒步', '科技'],
-      online: true,
-      verified: false,
-      premium: false
-    },
-    {
-      id: 'olivia',
-      name: 'Olivia',
-      age: 25,
-      location: '奥斯汀, TX',
-      occupation: '音乐制作人',
-      image: '👩‍🎤',
-      description: '音乐是我的生命，寻找志同道合的音乐爱好者',
-      interests: ['音乐', '创作', '演出', '录音', '吉他'],
-      online: true,
-      verified: true,
-      premium: true
-    },
-    {
-      id: 'madison',
-      name: 'Madison',
-      age: 27,
-      location: '芝加哥, IL',
-      occupation: '医生',
-      image: '👩‍⚕️',
-      description: '致力于帮助他人，寻找温暖贴心的伴侣',
-      interests: ['医学', '慈善', '阅读', '园艺', '动物'],
-      online: false,
-      verified: true,
-      premium: false
+  const { data: profilesData, isLoading: profilesLoading } = useQuery({
+    queryKey: ['/api/dating-profiles'],
+    queryFn: async () => {
+      const response = await fetch('/api/dating-profiles');
+      if (!response.ok) throw new Error('获取约会档案失败');
+      return response.json();
     }
-  ];
+  });
+
+  const profiles = profilesData?.profiles || [];
 
   // Get messages for selected profile
   const { data: messages = [] } = useQuery<DatingMessage[]>({
@@ -347,9 +277,18 @@ export default function DatingPage() {
         </CardContent>
       </Card>
 
+      {/* Loading State */}
+      {profilesLoading && (
+        <div className="text-center py-8">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">正在加载约会档案...</p>
+        </div>
+      )}
+
       {/* Profiles Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {profiles.map((profile) => (
+      {!profilesLoading && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {profiles.map((profile: any) => (
           <Card 
             key={profile.id} 
             className="hover:shadow-lg transition-shadow cursor-pointer group"
@@ -395,14 +334,14 @@ export default function DatingPage() {
               <div className="mb-4">
                 <h4 className="text-sm font-medium mb-2">兴趣爱好：</h4>
                 <div className="flex flex-wrap gap-1">
-                  {profile.interests.slice(0, 3).map((interest, index) => (
+                  {profile.interests?.slice(0, 3).map((interest: string, index: number) => (
                     <Badge key={index} variant="outline" className="text-xs">
                       {interest}
                     </Badge>
                   ))}
-                  {profile.interests.length > 3 && (
+                  {profile.interests?.length > 3 && (
                     <Badge variant="outline" className="text-xs">
-                      +{profile.interests.length - 3}
+                      +{profile.interests?.length - 3}
                     </Badge>
                   )}
                 </div>
@@ -439,7 +378,8 @@ export default function DatingPage() {
             </CardContent>
           </Card>
         ))}
-      </div>
+        </div>
+      )}
 
       {/* Platform Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
