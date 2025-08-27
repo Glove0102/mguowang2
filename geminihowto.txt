@@ -1,0 +1,12 @@
+Future Command to Use:
+Shell
+
+./gemini.sh "YOUR QUESTION IN QUOTES"
+Examples:
+
+Shell
+
+./gemini.sh "Write a python function that returns the factorial of a number."
+Shell
+
+./gemini.sh "What are the main differences between JavaScript and TypeScript?"
