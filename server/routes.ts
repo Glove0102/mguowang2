@@ -40,6 +40,13 @@ async function readFunFile() {
   return JSON.parse(data);
 }
 
+// Helper function to read vehicles data
+async function readVehiclesFile() {
+  const filePath = path.join(process.cwd(), 'data', 'vehicles.json');
+  const data = await fs.readFile(filePath, 'utf-8');
+  return JSON.parse(data);
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Authentication
   app.post("/api/auth/login", async (req, res) => {
@@ -93,6 +100,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(funContent);
     } catch (error) {
       res.status(500).json({ message: "获取娱乐内容失败" });
+    }
+  });
+
+  // Serve vehicles data
+  app.get("/api/vehicles", async (req, res) => {
+    try {
+      const vehicles = await readVehiclesFile();
+      res.json(vehicles);
+    } catch (error) {
+      res.status(500).json({ message: "获取车辆信息失败" });
     }
   });
 
