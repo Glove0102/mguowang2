@@ -1,0 +1,73 @@
+Product Requirements Document (PRD) v2
+Product Name: 美国网 (America Net)
+Vision: To create a private, single-user portal that offers an authentic and immersive experience of an "American Internet," complete with a rich ecosystem of sub-sites, a rewarding progression system, and a consistent, believable world.
+1. Core Principles (Non-Negotiable Rules)
+These principles are the foundation of the project and must be strictly followed in all aspects of development, from UI text to backend logic.
+* 1.1. Absolute Immersive Realism: The primary goal is to maintain the illusion that the portal and all its contents are real.
+    * STRICTLY PROHIBITED: Do not include any language, hints, or disclaimers anywhere in the UI, text, content, or system prompts that suggest the portal, its features, or subsites are simulated, fake, "for fun," "for entertainment," or "for learning purposes." 
+    * Example of Violation: A disclaimer on the Stock Trading page saying "This is a simulation." 
+    * Correct Implementation: All features, such as stock trading, betting, and product listings, must be presented as genuine, functioning services. 
+* 1.2. Consistent System Persona: All AI-generated content, including chat responses and news articles, must adopt a persona that reinforces the reality of the portal. The tone should be that of a helpful, authentic American service or friend, never an artificial assistant. 
+* 1.3. User-Centric Design: The UI must be intuitive and styled after modern Chinese applications, ensuring a familiar and engaging experience for the target user. 
+2. Tech Stack
+* Frontend: React (basic routing, simple state management with Context or Redux if needed). 
+* Backend: Node.js (Express) for API endpoints. 
+* Database: PostgreSQL for dynamic data (user progress, balances, etc.). Static JSON files for mock content where possible. 
+* Hosting: Replit deployment (built-in). 
+3. High-Level Architecture
+/client      (React frontend)
+/server      (Node backend)
+/data        (Static JSON for content)
+/db          (Migrations & schema if using PostgreSQL)
+/admin       (Admin panel code)
+/subsites    (Each subsite = simple folder with route + template)
+
+* Adding new sub-sites:
+    * Create a folder under /subsites/. 
+    * Register the new sub-site in /routes.js for navigation and to assign XP/$ rewards. 
+4. Core Features
+4.1 Onboarding
+* The sign-up flow leads to a pre-configured user account. 
+* Language selector defaults to Simplified Chinese. 
+* A simple password gate (hardcoded) blocks unauthorized access. 
+4.2 User System
+* A single, hardcoded user with: Username, Virtual dollars ($), XP & Level (1–5). 
+* Levels: L2 unlocks the 美女 site; L3+ unlocks more premium subsites. 
+* Progress Tracking: Stored in PostgreSQL. 
+4.3 Virtual Dollars & XP
+* Earning: Visiting pages, reading articles, playing games, stock trading, and winning the lottery. 
+* Spending: Lottery tickets, dating gifts, and premium creator content. 
+* Display: An always-visible top bar shows the user's $ balance and Level. 
+* Level Up Rules: Hardcoded XP thresholds (L2=100, L3=300, L4=600, L5=1000). 
+4.4 Subsites (MVP List)
+* Directive: All subsites must function and present themselves as real services. Remove any placeholder text or disclaimers that break immersion. | Subsite Name | Type | Features | | :--- | :--- | :--- | | News Site | Static | Articles sourced from JSON; XP awarded on visit. | | Gun Store | Static | Product listings. | | Houses for Sale | Static | Property listings from JSON. | | Planes for Sale | Static | Aircraft listings from JSON. | | Dating Site | Interactive | Profiles managed from admin panel; gifts cost $. | | Make Friends Chat | Interactive | OpenAI wrapper for chat; XP awarded for chatting. | | Creator Fan Pages | Interactive | Admin adds posts; premium content costs $. | | 美女 Models Site | Static | Unlock at L2; biographies and photos from JSON. | | Stock Trading | Game | Market tickers with daily price updates. | | Lottery Zone | Game | Weekly draw and instant scratch-off tickets. | | Arcade Games | Game | Browser games that award XP and . | | Jokes & Funny Videos | Static | A page with video clips and memes; XP on visits. | | Weather Center | Static | Weather forecasts for major US cities; XP on visits. | | Car & Truck Showroom | Static | Galleries of classic cars, trucks, and muscle cars; XP on visits. | | American Festivals | Static | Schedules for county fairs, rodeos, concerts; XP for browsing. | | Western Movies Corner | Static | Movie posters, clips, and reviews; XP for watching previews. | | Sports Betting | Game | Pick winning teams to earn XP and $. | | Puzzle & Board Games | Game | Crossword, Sudoku, etc. with XP/$ rewards for solving. | | Music Jukebox | Static | Clickable song covers to play country music; XP on listens. | | Tool & Tractor Store | Static | Catalog of tractors, tools, and farm gear; XP on visits. | | American Landmarks Map | Interactive | US map to click on states and view landmark photos; XP for discovery. | | Old American Ads | Static | A gallery of 1950s/60s advertisements; XP for browsing. | | Truck Driving Simulator | Game | A clicker mini-game to drive routes and earn XP/. | 
+4.5 Admin Panel
+* Accessible via /admin, protected by a hardcoded password. 
+* Features: Add/edit content for all subsites (dating profiles, creator posts, news, listings, etc.). Includes an OpenAI wrapper for quick content generation. 
+4.6 Content Storage
+* Static Pages: JSON files in the /data directory. 
+* Dynamic Data: Managed by PostgreSQL. 
+4.7 Language Handling
+* Frontend UI: Chinese text (hardcoded). 
+* Admin UI: English labels. 
+* Chat Features: OpenAI wrapper replies must be in short, simple, and natural-sounding Chinese, consistent with the persona of a real American friend (see Principle 1.2). 
+* Quick-replies: Pre-written Chinese phrases for chats. 
+4.8 Visual Design
+* UI Aesthetic: Inspired by modern Chinese applications—clean but information-rich. 
+* Layout: Simple grid layout with large icons and minimal Chinese text on buttons. 
+* Navigation:
+    * A progress bar for XP & Level is always visible at the top. 
+    * A persistent, Douyin-style navigation bar is fixed at the bottom of the screen. 
+* Pagination: Implemented for all content-heavy pages. 
+5. Non-Goals (Strict)
+* No real authentication beyond one hardcoded password. 
+* No real payments or commerce. (no mention of this though. it should all look and be presented if completely real. 
+* No multi-user support. 
+* No complex animations (simple reveals for lottery scratch-off are acceptable). 
+6. MVP Build Order
+1. Onboarding and user system. 
+2. Static subsites. 
+3. Interactive subsites. 
+4. Games. 
+5. Admin Panel. 
+6. Integration of all additional subsites. 
