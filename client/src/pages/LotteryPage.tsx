@@ -294,8 +294,8 @@ export default function LotteryPage() {
           <CardContent className="text-center space-y-4">
             <div className="relative">
               <div className={`w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-red-400 via-yellow-400 to-blue-400 flex items-center justify-center text-4xl ${
-                wheelSpinning ? 'animate-spin-wheel' : ''
-              }`}>
+                wheelSpinning ? 'animate-spin' : ''
+              }`} style={{ animationDuration: '3s' }}>
                 🎯
               </div>
               {wheelResult && !wheelSpinning && (

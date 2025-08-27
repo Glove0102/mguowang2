@@ -103,29 +103,18 @@ export default function HomePage() {
 
       <div className="max-w-6xl mx-auto p-4 space-y-6">
         {/* Welcome Header */}
-        <div className="patriotic-header p-6 rounded-xl text-white glow-animation">
-          <div className="flex items-center space-x-4">
-            <div className="bg-white/20 p-4 rounded-full float-animation">
-              <i className="fas fa-flag-usa text-4xl golden-text"></i>
+        <div className="bg-gradient-to-r from-primary to-accent text-primary-foreground p-6 rounded-xl shadow-lg">
+          <h1 className="text-2xl font-bold mb-2">欢迎来到美国网</h1>
+          <p className="text-primary-foreground/90">您的专属美国生活服务平台</p>
+          <div className="mt-4 flex items-center space-x-4 text-sm">
+            <div className="flex items-center">
+              <i className="fas fa-fire mr-1"></i>
+              <span>活跃用户: 847,293</span>
             </div>
-            <div className="flex-1">
-              <h1 className="text-3xl font-bold mb-2 golden-text">美国幸运大转盘</h1>
-              <p className="text-lg opacity-90 mb-4">试试你的运气，赢取丰厚奖励！</p>
-              <div className="flex items-center space-x-6 text-sm">
-                <div>今日奖金: ${(510000).toLocaleString()}</div>
-                <div>参与人数: {(24573).toLocaleString()}</div>
-                <div>中奖率: 75%</div>
-              </div>
+            <div className="flex items-center">
+              <i className="fas fa-chart-line mr-1"></i>
+              <span>今日交易: $12.8M</span>
             </div>
-            {user && (
-              <div className="balance-display p-4 rounded-lg text-center float-animation">
-                <div className="text-sm opacity-80 golden-text">账户余额</div>
-                <div className="text-2xl font-bold" data-testid="text-balance">
-                  ${user.balance.toLocaleString()}
-                </div>
-                <div className="text-xs opacity-70 golden-text">美元</div>
-              </div>
-            )}
           </div>
         </div>
 
@@ -222,19 +211,19 @@ export default function HomePage() {
         </div>
 
         {/* Lottery Section */}
-        <div className="lottery-card p-6 rounded-xl">
-          <h2 className="text-xl font-bold mb-4 flex items-center text-orange-800">
+        <div className="lottery-card p-6 rounded-xl text-white">
+          <h2 className="text-xl font-bold mb-4 flex items-center">
             <i className="fas fa-dice mr-2"></i>
             每日抽奖
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="red-packet p-4 rounded-lg text-center float-animation">
+            <div className="bg-white/20 backdrop-blur-sm p-4 rounded-lg text-center">
               <div className="text-3xl mb-2">🎰</div>
               <h3 className="font-bold mb-1">刮刮乐</h3>
-              <p className="text-sm opacity-90 mb-3">最高$1,000奖金</p>
+              <p className="text-sm opacity-90 mb-3">最高$1000奖金</p>
               <Button 
-                className="premium-gradient text-white px-4 py-2 rounded-full font-bold text-sm"
+                className="bg-white text-primary px-4 py-2 rounded-full font-bold text-sm hover:bg-gray-100 transition-colors"
                 onClick={() => handleLotteryAction('scratch')}
                 data-testid="button-scratch-lottery"
               >
@@ -242,12 +231,12 @@ export default function HomePage() {
               </Button>
             </div>
             
-            <div className="red-packet p-4 rounded-lg text-center float-animation">
+            <div className="bg-white/20 backdrop-blur-sm p-4 rounded-lg text-center">
               <div className="text-3xl mb-2">🎲</div>
               <h3 className="font-bold mb-1">幸运转盘</h3>
               <p className="text-sm opacity-90 mb-3">每日免费一次</p>
               <Button 
-                className="premium-gradient text-white px-4 py-2 rounded-full font-bold text-sm"
+                className="bg-secondary text-white px-4 py-2 rounded-full font-bold text-sm hover:bg-yellow-500 transition-colors"
                 onClick={() => handleLotteryAction('wheel')}
                 data-testid="button-spin-wheel"
               >
@@ -255,12 +244,12 @@ export default function HomePage() {
               </Button>
             </div>
             
-            <div className="red-packet p-4 rounded-lg text-center float-animation">
+            <div className="bg-white/20 backdrop-blur-sm p-4 rounded-lg text-center">
               <div className="text-3xl mb-2">💰</div>
               <h3 className="font-bold mb-1">每日签到</h3>
               <p className="text-sm opacity-90 mb-3">连续7天+100$</p>
               <Button 
-                className="premium-gradient text-white px-4 py-2 rounded-full font-bold text-sm"
+                className="bg-green-500 text-white px-4 py-2 rounded-full font-bold text-sm hover:bg-green-600 transition-colors"
                 onClick={() => handleLotteryAction('checkin')}
                 data-testid="button-daily-checkin"
               >

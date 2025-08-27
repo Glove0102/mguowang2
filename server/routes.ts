@@ -273,12 +273,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       // Check if already spun today
-      // const today = new Date().toDateString();
-      // const lastSpin = await storage.getLastLotteryTicket(user.id, "wheel");
+      const today = new Date().toDateString();
+      const lastSpin = await storage.getLastLotteryTicket(user.id, "wheel");
 
-      // if (lastSpin && lastSpin.createdAt && new Date(lastSpin.createdAt).toDateString() === today) {
-      //   return res.status(400).json({ message: "今日已转动过转盘" });
-      // }
+      if (lastSpin && lastSpin.createdAt && new Date(lastSpin.createdAt).toDateString() === today) {
+        return res.status(400).json({ message: "今日已转动过转盘" });
+      }
 
       // Generate random result
       const prizes = [
