@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -265,25 +265,6 @@ function CreatorManager() {
 }
 
 
-function AdminDashboard() {
-  return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-3xl font-bold tracking-tight mb-6">Admin Dashboard</h2>
-      <Tabs defaultValue="news">
-        <TabsList>
-          <TabsTrigger value="news">News Generator</TabsTrigger>
-          <TabsTrigger value="creators">Creator Content</TabsTrigger>
-        </TabsList>
-        <TabsContent value="news" className="mt-4">
-          <NewsGenerator />
-        </TabsContent>
-        <TabsContent value="creators" className="mt-4">
-          <CreatorManager />
-        </TabsContent>
-      </Tabs>
-    </div>
-  );
-}
 
 export default function AdminPage() {
   const [password, setPassword] = useState('');
