@@ -1,17 +1,34 @@
 import React from 'react';
 import { useLocation } from 'wouter';
 import { Link } from 'wouter';
+import { useUser } from '@/contexts/UserContext';
+import { useToast } from '@/hooks/use-toast';
 
 export function BottomNavigation() {
   const [location] = useLocation();
+  const { user } = useUser();
+  const { toast } = useToast();
 
   const navItems = [
     { path: '/', icon: 'fas fa-home', label: '首页' },
     { path: '/news', icon: 'fas fa-compass', label: '探索' },
     { path: '/lottery', icon: 'fas fa-dice', label: '抽奖', notification: true },
-    { path: '/dating', icon: 'fas fa-comment', label: '消息', badge: 3 },
+    { path: '/dating', icon: 'fas fa-comment', label: '消息', badge: 3, requiresLevel: 2 },
     { path: '/profile', icon: 'fas fa-user', label: '我的' }
   ];
+
+  const handleNavClick = (item: typeof navItems[0], e: React.MouseEvent) => {
+    if (item.requiresLevel && user && user.level < item.requiresLevel) {
+      e.preventDefault();
+      toast({
+        title: "功能锁定",
+        description: "此功能需要2级解锁",
+        variant: "destructive"
+      });
+      return false;
+    }
+    return true;
+  };
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-card border-t border-border shadow-lg z-50">
@@ -23,6 +40,7 @@ export function BottomNavigation() {
                 location === item.path ? 'text-primary' : 'text-muted-foreground hover:text-primary'
               }`}
               data-testid={`button-nav-${item.label}`}
+              onClick={(e) => handleNavClick(item, e)}
             >
               <div className="relative">
                 <i className={`${item.icon} text-lg mb-1`}></i>

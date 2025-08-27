@@ -1,0 +1,35 @@
+Of course. Here is a sequential, multi-step plan broken down into highly specific prompts. You can feed these to your AI coder one by one to build out the rest of the "America Net" portal.
+
+Core Directive to prepend to every prompt: “You are building a fully immersive, realistic portal called 'America Net.' Adhere strictly to the vision of providing an authentic experience. Do not add any disclaimers or text that suggests this is a simulation. All new features and subsites must follow the existing design and styling found in files like HomePage.tsx and GunStorePage.tsx."
+
+Phase 1: Implement Level-Based Access
+This is a critical feature from the PRD that controls user progression.
+
+Prompt 1: Implement Level Gate for Premium Services
+
+"Update the application to enforce level-based access for premium services. Specifically, the '美女约会' (Dating) and 'Creator Fan Pages' subsites must be locked.
+
+In client/src/components/BottomNavigation.tsx and client/src/pages/HomePage.tsx, find the links or ServiceCards that navigate to /dating and /creators.
+
+Use the useUser hook to get the current user's level.
+
+If the user's level is less than 2, prevent navigation. Instead, when the user clicks the link or card, show a toast notification with the title '功能锁定' and the description '此功能需要2级解锁' (This feature requires level 2 to unlock).
+
+If the user's level is 2 or greater, the links should function normally."
+
+Phase 2: Build Static Subsites
+These subsites will add content and breadth to the portal. We will build them one at a time.
+
+Prompt 2: Create the "美女 Models" Subsite
+
+"Create a new static subsite called '美女 Models'. This site is unlocked at Level 2, as per the PRD.
+
+Create a new data file at data/models.json. Populate it with at least 6 fictional female model profiles. Each profile should have an id, name, age, location, bio, and an array of image URLs (use emoji for images like in DatingPage.tsx).
+
+Create a new page component at client/src/pages/ModelsPage.tsx.
+
+This page should fetch data from a new API endpoint /api/models which reads from data/models.json.
+
+Design the page using the Card components to display each model's profile in a grid, similar to the layout in DatingPage.tsx. Include their name, age, location, and bio.
+
+Add a route for /models in client/src/App.tsx."

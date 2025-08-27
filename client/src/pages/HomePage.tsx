@@ -44,7 +44,17 @@ export default function HomePage() {
     }
   };
 
-  const handleServiceClick = (path: string, xpGain = 10, dollarGain = 5, activityType = '', description = '') => {
+  const handleServiceClick = (path: string, xpGain = 10, dollarGain = 5, activityType = '', description = '', requiredLevel = 1) => {
+    // Check level requirement for premium services
+    if (requiredLevel > 1 && user && user.level < requiredLevel) {
+      toast({
+        title: "功能锁定",
+        description: "此功能需要2级解锁",
+        variant: "destructive"
+      });
+      return;
+    }
+
     if (activityType && description) {
       updateUserProgress(xpGain, dollarGain, activityType, description);
     }
@@ -173,10 +183,10 @@ export default function HomePage() {
             高级服务 (等级{user?.level}已解锁)
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div 
               className="bg-white/20 backdrop-blur-sm p-4 rounded-lg hover:bg-white/30 transition-colors cursor-pointer"
-              onClick={() => handleServiceClick('/dating', 30, 25, 'dating_visit', '访问美女约会')}
+              onClick={() => handleServiceClick('/dating', 30, 25, 'dating_visit', '访问美女约会', 2)}
               data-testid="card-dating"
             >
               <div className="flex items-center space-x-3">
@@ -187,6 +197,23 @@ export default function HomePage() {
                   <h3 className="font-bold">美女约会</h3>
                   <p className="text-sm opacity-90">寻找你的真爱</p>
                   <div className="text-xs mt-1 bg-pink-500 px-2 py-1 rounded">3,247在线</div>
+                </div>
+              </div>
+            </div>
+
+            <div 
+              className="bg-white/20 backdrop-blur-sm p-4 rounded-lg hover:bg-white/30 transition-colors cursor-pointer"
+              onClick={() => handleServiceClick('/creators', 25, 20, 'creators_visit', '访问创作者粉丝页面', 2)}
+              data-testid="card-creators"
+            >
+              <div className="flex items-center space-x-3">
+                <div className="bg-purple-500 p-3 rounded-full">
+                  <i className="fas fa-star text-white text-lg"></i>
+                </div>
+                <div>
+                  <h3 className="font-bold">Creator Fan Pages</h3>
+                  <p className="text-sm opacity-90">支持你的创作者</p>
+                  <div className="text-xs mt-1 bg-purple-500 px-2 py-1 rounded">专属内容</div>
                 </div>
               </div>
             </div>
