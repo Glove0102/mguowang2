@@ -183,7 +183,7 @@ export default function HomePage() {
             高级服务 (等级{user?.level}已解锁)
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div 
               className="bg-white/20 backdrop-blur-sm p-4 rounded-lg hover:bg-white/30 transition-colors cursor-pointer"
               onClick={() => handleServiceClick('/dating', 30, 25, 'dating_visit', '访问美女约会', 2)}
@@ -214,6 +214,23 @@ export default function HomePage() {
                   <h3 className="font-bold">Creator Fan Pages</h3>
                   <p className="text-sm opacity-90">支持你的创作者</p>
                   <div className="text-xs mt-1 bg-purple-500 px-2 py-1 rounded">专属内容</div>
+                </div>
+              </div>
+            </div>
+
+            <div 
+              className="bg-white/20 backdrop-blur-sm p-4 rounded-lg hover:bg-white/30 transition-colors cursor-pointer"
+              onClick={() => handleServiceClick('/models', 30, 20, 'models_visit', '访问美女模特', 2)}
+              data-testid="card-models"
+            >
+              <div className="flex items-center space-x-3">
+                <div className="bg-orange-500 p-3 rounded-full">
+                  <i className="fas fa-camera text-white text-lg"></i>
+                </div>
+                <div>
+                  <h3 className="font-bold">美女 Models</h3>
+                  <p className="text-sm opacity-90">专业模特展示</p>
+                  <div className="text-xs mt-1 bg-orange-500 px-2 py-1 rounded">8位在线</div>
                 </div>
               </div>
             </div>

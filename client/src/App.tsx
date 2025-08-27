@@ -17,6 +17,7 @@ import StockTradingPage from "@/pages/StockTradingPage";
 import LotteryPage from "@/pages/LotteryPage";
 import AdminPage from "@/pages/AdminPage";
 import CreatorPage from "@/pages/CreatorPage";
+import ModelsPage from "@/pages/ModelsPage";
 import { TopProgressBar } from "@/components/TopProgressBar";
 import { BottomNavigation } from "@/components/BottomNavigation";
 
@@ -42,6 +43,7 @@ function AuthenticatedApp() {
           <Route path="/stocks" component={StockTradingPage} />
           <Route path="/lottery" component={LotteryPage} />
           <Route path="/creators" component={CreatorPage} />
+          <Route path="/models" component={ModelsPage} />
           <Route path="/admin" component={AdminPage} />
           <Route component={NotFound} />
         </Switch>

@@ -26,6 +26,13 @@ async function writeNewsFile(data: any) {
   await fs.writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8');
 }
 
+// Helper function to read models data
+async function readModelsFile() {
+  const filePath = path.join(process.cwd(), 'data', 'models.json');
+  const data = await fs.readFile(filePath, 'utf-8');
+  return JSON.parse(data);
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Authentication
   app.post("/api/auth/login", async (req, res) => {
@@ -59,6 +66,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(news);
     } catch (error) {
       res.status(500).json({ message: "获取新闻失败" });
+    }
+  });
+
+  // Serve models data
+  app.get("/api/models", async (req, res) => {
+    try {
+      const models = await readModelsFile();
+      res.json(models);
+    } catch (error) {
+      res.status(500).json({ message: "获取模特信息失败" });
     }
   });
 
