@@ -82,6 +82,12 @@ async function readDatingProfilesFile() {
   return JSON.parse(data);
 }
 
+// Helper function to write dating profiles data
+async function writeDatingProfilesFile(data: any) {
+  const filePath = path.join(process.cwd(), 'data', 'dating-profiles.json');
+  await fs.writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8');
+}
+
 // Helper function to read weather data
 async function readWeatherFile() {
   const filePath = path.join(process.cwd(), 'data', 'weather.json');
@@ -314,6 +320,97 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(201).json(newPost);
     } catch (error) {
       res.status(500).json({ message: "创建帖子失败" });
+    }
+  });
+
+  // Dating profiles management endpoints
+  app.post("/api/admin/dating-profiles", async (req, res) => {
+    try {
+      const { name, age, location, occupation, description, imageEmoji } = req.body;
+      
+      // Validation
+      if (!name || !age || !location || !occupation || !description) {
+        return res.status(400).json({ message: "所有字段都是必填的" });
+      }
+
+      // Read existing profiles
+      const profilesData = await readDatingProfilesFile();
+      
+      // Generate new profile ID
+      const newId = `profile_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+      
+      // Create new profile object
+      const newProfile = {
+        id: newId,
+        name,
+        age: parseInt(age),
+        location,
+        occupation,
+        description,
+        interests: ["旅行", "美食", "音乐", "运动", "阅读"],
+        photos: [`${imageEmoji || '😊'}_photo.jpg`],
+        personality: {
+          traits: ["友善", "真诚", "积极", "幽默"],
+          hobbies: ["电影", "健身", "烹饪", "摄影"],
+          favorites: {
+            music: "流行音乐",
+            movies: "浪漫喜剧",
+            food: "中式料理",
+            travel: "海滨城市"
+          }
+        },
+        stats: {
+          height: "5'7\"",
+          education: "大学本科",
+          languages: ["中文", "英语"],
+          relationshipGoal: "认真交往"
+        },
+        online: true,
+        verified: Math.random() > 0.3,
+        premium: Math.random() > 0.5,
+        joinDate: new Date().toISOString().split('T')[0],
+        lastActive: new Date().toISOString(),
+        messageCount: Math.floor(Math.random() * 200),
+        responseRate: Math.floor(Math.random() * 40) + 60
+      };
+
+      // Add to profiles array
+      profilesData.profiles.push(newProfile);
+      
+      // Write back to file
+      await writeDatingProfilesFile(profilesData);
+
+      res.status(201).json(newProfile);
+    } catch (error) {
+      console.error("Error creating dating profile:", error);
+      res.status(500).json({ message: "创建约会档案失败" });
+    }
+  });
+
+  app.delete("/api/admin/dating-profiles/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      
+      // Read existing profiles
+      const profilesData = await readDatingProfilesFile();
+      
+      // Find profile index
+      const profileIndex = profilesData.profiles.findIndex((p: any) => p.id === id);
+      
+      if (profileIndex === -1) {
+        return res.status(404).json({ message: "档案未找到" });
+      }
+
+      // Remove profile
+      const deletedProfile = profilesData.profiles.splice(profileIndex, 1)[0];
+      
+      // Write back to file
+      await writeDatingProfilesFile(profilesData);
+
+      res.json({ message: "档案删除成功", deletedProfile });
+    } catch (error) {
+      console.error("Error deleting dating profile:", error);
+      res.status(500).json({ message: "删除档案失败" });
     }
   });
 
