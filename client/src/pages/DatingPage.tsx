@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { DatingMessage } from '@shared/schema';
 
 export default function DatingPage() {
@@ -12,6 +12,7 @@ export default function DatingPage() {
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const queryClient = useQueryClient();
 
   const { data: profilesData, isLoading: profilesLoading } = useQuery({
     queryKey: ['/api/dating-profiles'],
@@ -53,8 +54,10 @@ export default function DatingPage() {
           title: "消息已发送",
           description: `${selectedProfile.name} 回复了您的消息`,
         });
-        // Refresh messages
-        window.location.reload(); // Simple refresh for now
+        // Invalidate and refetch messages
+        queryClient.invalidateQueries({
+          queryKey: ['/api/dating/messages', selectedProfile.id]
+        });
       }
     } catch (error) {
       toast({
