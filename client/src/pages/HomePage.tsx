@@ -129,7 +129,7 @@ export default function HomePage() {
         </div>
 
         {/* Main Services Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4">
           <ServiceCard
             icon="fas fa-newspaper"
             title="美国新闻"
@@ -195,6 +195,17 @@ export default function HomePage() {
             iconColor="text-blue-600"
             onClick={() => handleServiceClick('/vehicles', 15, 10, 'vehicles_visit', '访问汽车展厅')}
             testId="card-vehicles"
+          />
+          <ServiceCard
+            icon="fas fa-cloud-sun"
+            title="天气中心"
+            description="实时天气"
+            badge="精准预报"
+            badgeColor="cyan"
+            bgColor="bg-cyan-100"
+            iconColor="text-cyan-600"
+            onClick={() => handleServiceClick('/weather', 8, 3, 'weather_visit', '访问天气中心')}
+            testId="card-weather"
           />
         </div>
 

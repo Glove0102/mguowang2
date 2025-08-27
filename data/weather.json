@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "city": "New York",
+    "state": "NY",
+    "temperature": 72,
+    "condition": "Sunny",
+    "icon": "☀️",
+    "humidity": 45,
+    "windSpeed": 8,
+    "windDirection": "NW",
+    "uvIndex": 6,
+    "visibility": 10,
+    "pressure": 30.15,
+    "feelsLike": 75,
+    "forecast": [
+      {"day": "Tomorrow", "high": 74, "low": 58, "condition": "Partly Cloudy", "icon": "⛅"},
+      {"day": "Friday", "high": 68, "low": 55, "condition": "Rainy", "icon": "🌧️"},
+      {"day": "Saturday", "high": 71, "low": 59, "condition": "Sunny", "icon": "☀️"}
+    ]
+  },
+  {
+    "id": 2,
+    "city": "Los Angeles",
+    "state": "CA",
+    "temperature": 78,
+    "condition": "Partly Cloudy",
+    "icon": "⛅",
+    "humidity": 65,
+    "windSpeed": 6,
+    "windDirection": "SW",
+    "uvIndex": 7,
+    "visibility": 8,
+    "pressure": 29.98,
+    "feelsLike": 80,
+    "forecast": [
+      {"day": "Tomorrow", "high": 81, "low": 64, "condition": "Sunny", "icon": "☀️"},
+      {"day": "Friday", "high": 79, "low": 63, "condition": "Sunny", "icon": "☀️"},
+      {"day": "Saturday", "high": 76, "low": 61, "condition": "Cloudy", "icon": "☁️"}
+    ]
+  },
+  {
+    "id": 3,
+    "city": "Chicago",
+    "state": "IL",
+    "temperature": 65,
+    "condition": "Cloudy",
+    "icon": "☁️",
+    "humidity": 70,
+    "windSpeed": 12,
+    "windDirection": "NE",
+    "uvIndex": 3,
+    "visibility": 6,
+    "pressure": 30.02,
+    "feelsLike": 62,
+    "forecast": [
+      {"day": "Tomorrow", "high": 68, "low": 52, "condition": "Partly Cloudy", "icon": "⛅"},
+      {"day": "Friday", "high": 71, "low": 55, "condition": "Sunny", "icon": "☀️"},
+      {"day": "Saturday", "high": 69, "low": 54, "condition": "Rainy", "icon": "🌧️"}
+    ]
+  },
+  {
+    "id": 4,
+    "city": "Miami",
+    "state": "FL",
+    "temperature": 84,
+    "condition": "Thunderstorms",
+    "icon": "⛈️",
+    "humidity": 85,
+    "windSpeed": 15,
+    "windDirection": "SE",
+    "uvIndex": 9,
+    "visibility": 4,
+    "pressure": 29.85,
+    "feelsLike": 92,
+    "forecast": [
+      {"day": "Tomorrow", "high": 86, "low": 76, "condition": "Sunny", "icon": "☀️"},
+      {"day": "Friday", "high": 85, "low": 75, "condition": "Partly Cloudy", "icon": "⛅"},
+      {"day": "Saturday", "high": 83, "low": 74, "condition": "Thunderstorms", "icon": "⛈️"}
+    ]
+  },
+  {
+    "id": 5,
+    "city": "Houston",
+    "state": "TX",
+    "temperature": 81,
+    "condition": "Rainy",
+    "icon": "🌧️",
+    "humidity": 78,
+    "windSpeed": 10,
+    "windDirection": "S",
+    "uvIndex": 4,
+    "visibility": 5,
+    "pressure": 29.92,
+    "feelsLike": 85,
+    "forecast": [
+      {"day": "Tomorrow", "high": 83, "low": 69, "condition": "Partly Cloudy", "icon": "⛅"},
+      {"day": "Friday", "high": 85, "low": 71, "condition": "Sunny", "icon": "☀️"},
+      {"day": "Saturday", "high": 82, "low": 70, "condition": "Cloudy", "icon": "☁️"}
+    ]
+  }
+]

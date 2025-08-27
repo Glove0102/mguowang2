@@ -82,6 +82,13 @@ async function readDatingProfilesFile() {
   return JSON.parse(data);
 }
 
+// Helper function to read weather data
+async function readWeatherFile() {
+  const filePath = path.join(process.cwd(), 'data', 'weather.json');
+  const data = await fs.readFile(filePath, 'utf-8');
+  return JSON.parse(data);
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Authentication
   app.post("/api/auth/login", async (req, res) => {
@@ -195,6 +202,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(profiles);
     } catch (error) {
       res.status(500).json({ message: "获取约会档案失败" });
+    }
+  });
+
+  // Serve weather data
+  app.get("/api/weather", async (req, res) => {
+    try {
+      const weather = await readWeatherFile();
+      res.json(weather);
+    } catch (error) {
+      res.status(500).json({ message: "获取天气信息失败" });
     }
   });
 
