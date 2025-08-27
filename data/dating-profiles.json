@@ -1,0 +1,324 @@
+{
+  "profiles": [
+    {
+      "id": "jessica",
+      "name": "Jessica",
+      "age": 26,
+      "location": "洛杉矶, CA",
+      "occupation": "时尚设计师",
+      "description": "热爱艺术和旅行，寻找真诚的另一半。我喜欢探索新的创意灵感，也享受安静的咖啡时光。",
+      "interests": ["艺术", "旅行", "美食", "健身", "音乐"],
+      "photos": [
+        "jessica_1.jpg",
+        "jessica_2.jpg", 
+        "jessica_3.jpg"
+      ],
+      "personality": {
+        "traits": ["创意", "外向", "温柔", "独立"],
+        "hobbies": ["绘画", "摄影", "瑜伽", "烹饪"],
+        "favorites": {
+          "music": "独立流行",
+          "movies": "浪漫喜剧",
+          "food": "意大利菜",
+          "travel": "欧洲"
+        }
+      },
+      "stats": {
+        "height": "5'6\"",
+        "education": "艺术学院学士",
+        "languages": ["英语", "法语"],
+        "relationshipGoal": "认真交往"
+      },
+      "online": true,
+      "verified": true,
+      "premium": true,
+      "joinDate": "2023-06-15",
+      "lastActive": "2024-01-15T10:30:00Z",
+      "messageCount": 147,
+      "responseRate": 89
+    },
+    {
+      "id": "amanda",
+      "name": "Amanda",
+      "age": 28,
+      "location": "纽约, NY", 
+      "occupation": "金融分析师",
+      "description": "独立自信的职场女性，喜欢探索新事物。工作之余享受生活，寻找志同道合的伴侣。",
+      "interests": ["投资", "瑜伽", "葡萄酒", "读书", "烹饪"],
+      "personality": {
+        "traits": ["聪明", "独立", "幽默", "务实"],
+        "hobbies": ["阅读", "品酒", "徒步", "投资理财"],
+        "favorites": {
+          "music": "爵士乐",
+          "movies": "悬疑片",
+          "food": "日本料理",
+          "travel": "亚洲"
+        }
+      },
+      "stats": {
+        "height": "5'7\"",
+        "education": "商学院硕士",
+        "languages": ["英语", "西班牙语"],
+        "relationshipGoal": "长期关系"
+      },
+      "online": true,
+      "verified": true,
+      "premium": false,
+      "joinDate": "2023-09-22",
+      "lastActive": "2024-01-15T09:15:00Z",
+      "messageCount": 203,
+      "responseRate": 76
+    },
+    {
+      "id": "sophia",
+      "name": "Sophia",
+      "age": 24,
+      "location": "迈阿密, FL",
+      "occupation": "模特",
+      "description": "阳光开朗，享受海滩生活和户外运动。热爱时尚和摄影，喜欢积极向上的生活态度。",
+      "interests": ["健身", "海滩", "摄影", "舞蹈", "冲浪"],
+      "personality": {
+        "traits": ["活泼", "阳光", "健康", "时尚"],
+        "hobbies": ["冲浪", "舞蹈", "摄影", "时尚"],
+        "favorites": {
+          "music": "拉丁音乐",
+          "movies": "动作片",
+          "food": "地中海菜",
+          "travel": "热带海岛"
+        }
+      },
+      "stats": {
+        "height": "5'8\"",
+        "education": "传媒学院学士",
+        "languages": ["英语", "葡萄牙语"],
+        "relationshipGoal": "约会交友"
+      },
+      "online": false,
+      "verified": true,
+      "premium": true,
+      "joinDate": "2023-11-08",
+      "lastActive": "2024-01-14T20:45:00Z",
+      "messageCount": 89,
+      "responseRate": 94
+    },
+    {
+      "id": "emily",
+      "name": "Emily",
+      "age": 29,
+      "location": "西雅图, WA",
+      "occupation": "软件工程师",
+      "description": "科技爱好者，热衷于创新和学习。喜欢解决复杂问题，也享受简单的生活乐趣。",
+      "interests": ["编程", "游戏", "咖啡", "徒步", "科技"],
+      "personality": {
+        "traits": ["理性", "创新", "耐心", "好奇"],
+        "hobbies": ["编程", "游戏", "徒步", "读书"],
+        "favorites": {
+          "music": "电子音乐",
+          "movies": "科幻片",
+          "food": "咖啡文化",
+          "travel": "科技城市"
+        }
+      },
+      "stats": {
+        "height": "5'5\"",
+        "education": "计算机科学硕士",
+        "languages": ["英语", "日语"],
+        "relationshipGoal": "寻找灵魂伴侣"
+      },
+      "online": true,
+      "verified": false,
+      "premium": false,
+      "joinDate": "2023-08-12",
+      "lastActive": "2024-01-15T11:22:00Z",
+      "messageCount": 156,
+      "responseRate": 67
+    },
+    {
+      "id": "olivia",
+      "name": "Olivia",
+      "age": 25,
+      "location": "奥斯汀, TX",
+      "occupation": "音乐制作人",
+      "description": "音乐是我的生命，寻找志同道合的音乐爱好者。创作是我的激情，分享是我的快乐。",
+      "interests": ["音乐", "创作", "演出", "录音", "吉他"],
+      "personality": {
+        "traits": ["艺术", "激情", "创造", "感性"],
+        "hobbies": ["作曲", "演奏", "录音", "演出"],
+        "favorites": {
+          "music": "独立摇滚",
+          "movies": "音乐电影",
+          "food": "德州BBQ",
+          "travel": "音乐节之旅"
+        }
+      },
+      "stats": {
+        "height": "5'4\"",
+        "education": "音乐学院学士",
+        "languages": ["英语"],
+        "relationshipGoal": "寻找音乐伙伴"
+      },
+      "online": true,
+      "verified": true,
+      "premium": true,
+      "joinDate": "2023-10-03",
+      "lastActive": "2024-01-15T12:10:00Z",
+      "messageCount": 134,
+      "responseRate": 85
+    },
+    {
+      "id": "madison",
+      "name": "Madison",
+      "age": 27,
+      "location": "芝加哥, IL",
+      "occupation": "医生",
+      "description": "致力于帮助他人，寻找温暖贴心的伴侣。工作虽忙但充实，希望找到理解支持的另一半。",
+      "interests": ["医学", "慈善", "阅读", "园艺", "动物"],
+      "personality": {
+        "traits": ["温暖", "责任", "专业", "关爱"],
+        "hobbies": ["志愿服务", "园艺", "阅读", "动物救助"],
+        "favorites": {
+          "music": "古典音乐",
+          "movies": "传记片",
+          "food": "健康料理",
+          "travel": "人文景观"
+        }
+      },
+      "stats": {
+        "height": "5'6\"",
+        "education": "医学院博士",
+        "languages": ["英语", "德语"],
+        "relationshipGoal": "寻找终身伴侣"
+      },
+      "online": false,
+      "verified": true,
+      "premium": false,
+      "joinDate": "2023-07-28",
+      "lastActive": "2024-01-14T18:30:00Z",
+      "messageCount": 198,
+      "responseRate": 72
+    },
+    {
+      "id": "chloe",
+      "name": "Chloe",
+      "age": 23,
+      "location": "旧金山, CA",
+      "occupation": "创业者",
+      "description": "年轻的创业者，充满梦想和活力。正在打造自己的科技公司，寻找支持我梦想的人。",
+      "interests": ["创业", "科技", "投资", "瑜伽", "素食"],
+      "personality": {
+        "traits": ["雄心", "创新", "乐观", "坚韧"],
+        "hobbies": ["创业", "投资", "瑜伽", "素食烹饪"],
+        "favorites": {
+          "music": "激励音乐",
+          "movies": "创业电影",
+          "food": "素食料理",
+          "travel": "科技展览"
+        }
+      },
+      "stats": {
+        "height": "5'3\"",
+        "education": "斯坦福大学学士",
+        "languages": ["英语", "中文"],
+        "relationshipGoal": "寻找创业伙伴"
+      },
+      "online": true,
+      "verified": true,
+      "premium": true,
+      "joinDate": "2023-12-01",
+      "lastActive": "2024-01-15T13:45:00Z",
+      "messageCount": 67,
+      "responseRate": 91
+    },
+    {
+      "id": "rachel",
+      "name": "Rachel",
+      "age": 30,
+      "location": "波士顿, MA",
+      "occupation": "律师",
+      "description": "资深律师，专业能力强。生活中喜欢简单的快乐，寻找成熟稳重的另一半。",
+      "interests": ["法律", "历史", "红酒", "马术", "古典音乐"],
+      "personality": {
+        "traits": ["专业", "成熟", "优雅", "理性"],
+        "hobbies": ["马术", "品酒", "历史研究", "古典音乐"],
+        "favorites": {
+          "music": "古典音乐",
+          "movies": "法庭片",
+          "food": "法式料理",
+          "travel": "历史古迹"
+        }
+      },
+      "stats": {
+        "height": "5'7\"",
+        "education": "哈佛法学院JD",
+        "languages": ["英语", "法语", "拉丁语"],
+        "relationshipGoal": "寻找结婚对象"
+      },
+      "online": true,
+      "verified": true,
+      "premium": true,
+      "joinDate": "2023-05-20",
+      "lastActive": "2024-01-15T08:20:00Z",
+      "messageCount": 289,
+      "responseRate": 68
+    }
+  ],
+  "platformStats": {
+    "totalUsers": 89247,
+    "activeUsers": 3247,
+    "successfulMatches": 15847,
+    "averageResponseRate": 78,
+    "monthlyConversations": 2400000,
+    "userSatisfaction": 4.8
+  },
+  "premiumFeatures": [
+    {
+      "name": "无限聊天",
+      "description": "不限制聊天次数",
+      "icon": "💬"
+    },
+    {
+      "name": "查看谁喜欢你",
+      "description": "看到所有喜欢你的人",
+      "icon": "❤️"
+    },
+    {
+      "name": "VIP专属徽章",
+      "description": "显示VIP身份",
+      "icon": "👑"
+    },
+    {
+      "name": "优先客服",
+      "description": "24小时优先支持",
+      "icon": "🎧"
+    }
+  ],
+  "virtualGifts": [
+    { "name": "玫瑰", "emoji": "🌹", "cost": 5 },
+    { "name": "巧克力", "emoji": "🍫", "cost": 10 },
+    { "name": "香槟", "emoji": "🍾", "cost": 25 },
+    { "name": "钻戒", "emoji": "💍", "cost": 100 },
+    { "name": "跑车", "emoji": "🏎️", "cost": 500 },
+    { "name": "别墅", "emoji": "🏰", "cost": 1000 }
+  ],
+  "ageGroups": [
+    { "range": "18-24", "count": 2847, "percentage": 32 },
+    { "range": "25-29", "count": 3124, "percentage": 35 },
+    { "range": "30-34", "count": 1956, "percentage": 22 },
+    { "range": "35+", "count": 978, "percentage": 11 }
+  ],
+  "locations": [
+    { "city": "洛杉矶", "state": "CA", "count": 12847 },
+    { "city": "纽约", "state": "NY", "count": 15234 },
+    { "city": "迈阿密", "state": "FL", "count": 8934 },
+    { "city": "西雅图", "state": "WA", "count": 7823 },
+    { "city": "奥斯汀", "state": "TX", "count": 6789 },
+    { "city": "芝加哥", "state": "IL", "count": 9456 },
+    { "city": "旧金山", "state": "CA", "count": 11234 },
+    { "city": "波士顿", "state": "MA", "count": 8765 }
+  ],
+  "meta": {
+    "totalProfiles": 8,
+    "lastUpdated": "2024-01-15T12:00:00Z",
+    "version": "1.0"
+  }
+}

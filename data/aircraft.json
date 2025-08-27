@@ -1,0 +1,315 @@
+{
+  "aircraft": [
+    {
+      "id": 1,
+      "name": "Gulfstream G650ER",
+      "category": "私人飞机",
+      "manufacturer": "Gulfstream Aerospace",
+      "price": 70000000,
+      "description": "世界顶级超远程商务机，奢华与性能的完美结合",
+      "specifications": {
+        "range": "7,500海里",
+        "maxSpeed": "马赫0.925",
+        "cabinAltitude": "4,100英尺",
+        "maxPassengers": 19,
+        "baggage": "195立方英尺",
+        "engines": "两台Rolls-Royce BR725发动机"
+      },
+      "features": [
+        "全尺寸厨房",
+        "主卧套房",
+        "会议区域",
+        "卫星通信",
+        "高速WiFi",
+        "先进航电系统",
+        "降噪技术",
+        "LED照明系统"
+      ],
+      "performance": {
+        "cruiseSpeed": "516节",
+        "serviceRange": "7500海里",
+        "fuelCapacity": "48200磅",
+        "takeoffDistance": "6000英尺",
+        "landingDistance": "2500英尺"
+      },
+      "interior": {
+        "cabinLength": "46英尺10英寸",
+        "cabinWidth": "8英尺6英寸",
+        "cabinHeight": "6英尺5英寸",
+        "windows": "14个椭圆形舷窗",
+        "seating": "最多19个座位"
+      },
+      "year": 2023,
+      "hours": 150,
+      "rating": 4.9,
+      "isHot": true,
+      "isCertified": true,
+      "availability": "现货",
+      "delivery": "立即交付"
+    },
+    {
+      "id": 2,
+      "name": "Bombardier Global 7500",
+      "category": "商务机",
+      "manufacturer": "Bombardier",
+      "price": 72500000,
+      "description": "超长航程旗舰商务机，四个独立生活区域",
+      "specifications": {
+        "range": "7,700海里",
+        "maxSpeed": "马赫0.925",
+        "cabinAltitude": "4,850英尺",
+        "maxPassengers": 17,
+        "baggage": "195立方英尺",
+        "engines": "两台GE Passport发动机"
+      },
+      "features": [
+        "全尺寸床铺",
+        "独立淋浴间",
+        "娱乐套房",
+        "厨师厨房",
+        "24/7管家服务",
+        "4K显示系统",
+        "Nuage座椅",
+        "Nice触控技术"
+      ],
+      "year": 2022,
+      "hours": 280,
+      "rating": 4.8,
+      "isHot": true,
+      "isCertified": true
+    },
+    {
+      "id": 3,
+      "name": "Cessna Citation X+",
+      "category": "轻型飞机",
+      "manufacturer": "Textron Aviation",
+      "price": 23000000,
+      "description": "世界最快的民用飞机，极速商务出行",
+      "specifications": {
+        "range": "3,460海里",
+        "maxSpeed": "马赫0.935",
+        "cabinAltitude": "5,800英尺",
+        "maxPassengers": 10,
+        "engines": "两台Rolls-Royce AE 3007C2发动机"
+      },
+      "features": [
+        "高速巡航",
+        "先进航电",
+        "舒适座椅",
+        "大行李舱",
+        "降噪技术",
+        "LED照明",
+        "高清显示器",
+        "Wi-Fi连接"
+      ],
+      "year": 2021,
+      "hours": 450,
+      "rating": 4.7,
+      "isHot": false,
+      "isCertified": true
+    },
+    {
+      "id": 4,
+      "name": "Airbus ACH160",
+      "category": "直升机",
+      "manufacturer": "Airbus Helicopters",
+      "price": 17000000,
+      "description": "最新一代豪华直升机，城市通勤首选",
+      "specifications": {
+        "range": "460海里",
+        "maxSpeed": "180节",
+        "cabinVolume": "6.8立方米",
+        "maxPassengers": 8,
+        "engines": "两台Safran Arrano发动机"
+      },
+      "features": [
+        "全景天窗",
+        "降噪技术",
+        "豪华内饰",
+        "双发动机",
+        "IFR认证",
+        "自动驾驶",
+        "夜视系统",
+        "紧急浮筒"
+      ],
+      "year": 2023,
+      "hours": 80,
+      "rating": 4.8,
+      "isHot": false,
+      "isCertified": true
+    },
+    {
+      "id": 5,
+      "name": "Boeing Business Jet MAX",
+      "category": "豪华客机",
+      "manufacturer": "Boeing",
+      "price": 100000000,
+      "description": "基于737 MAX的私人客机，私人航空顶级之选",
+      "specifications": {
+        "range": "6,640海里",
+        "maxSpeed": "马赫0.82",
+        "cabinArea": "1,025平方英尺",
+        "maxPassengers": 25,
+        "engines": "两台CFM LEAP-1B发动机"
+      },
+      "features": [
+        "主卧室",
+        "会议室",
+        "娱乐区",
+        "全尺寸厨房",
+        "私人办公室",
+        "健身区",
+        "医疗设施",
+        "安全系统"
+      ],
+      "year": 2023,
+      "hours": 200,
+      "rating": 4.9,
+      "isHot": true,
+      "isCertified": true
+    },
+    {
+      "id": 6,
+      "name": "Embraer Phenom 300E",
+      "category": "轻型飞机",
+      "manufacturer": "Embraer",
+      "price": 9500000,
+      "description": "轻型喷气机中的佼佼者，经济实用的商务选择",
+      "specifications": {
+        "range": "2,010海里",
+        "maxSpeed": "464节",
+        "cabinAltitude": "4,000英尺",
+        "maxPassengers": 9,
+        "engines": "两台Pratt & Whitney Canada PW535E1发动机"
+      },
+      "features": [
+        "大行李舱",
+        "先进航电",
+        "LED照明",
+        "快速充电",
+        "经济油耗",
+        "舒适座椅",
+        "娱乐系统",
+        "Wi-Fi连接"
+      ],
+      "year": 2020,
+      "hours": 680,
+      "rating": 4.6,
+      "isHot": false,
+      "isCertified": true
+    },
+    {
+      "id": 7,
+      "name": "HondaJet Elite S",
+      "category": "轻型飞机",
+      "manufacturer": "Honda Aircraft",
+      "price": 5400000,
+      "description": "创新设计的轻型商务机，燃油效率极高",
+      "specifications": {
+        "range": "1,437海里",
+        "maxSpeed": "422节",
+        "cabinAltitude": "8,000英尺",
+        "maxPassengers": 6,
+        "engines": "两台GE Honda HF120发动机"
+      },
+      "features": [
+        "Over-The-Wing发动机",
+        "复合材料机身",
+        "全玻璃驾驶舱",
+        "降噪技术",
+        "燃油效率",
+        "舒适座椅",
+        "行李舱"
+      ],
+      "year": 2022,
+      "hours": 320,
+      "rating": 4.5,
+      "isHot": false,
+      "isCertified": true
+    },
+    {
+      "id": 8,
+      "name": "Pilatus PC-24",
+      "category": "轻型飞机",
+      "manufacturer": "Pilatus Aircraft",
+      "price": 10900000,
+      "description": "超级多功能商务机，可在短跑道起降",
+      "specifications": {
+        "range": "2,000海里",
+        "maxSpeed": "440节",
+        "cabinAltitude": "8,000英尺",
+        "maxPassengers": 10,
+        "engines": "两台Williams FJ44-4A发动机"
+      },
+      "features": [
+        "短跑道能力",
+        "大型货舱门",
+        "平坦客舱地板",
+        "先进航电",
+        "快速起降",
+        "多功能座椅",
+        "LED照明"
+      ],
+      "year": 2021,
+      "hours": 520,
+      "rating": 4.6,
+      "isHot": false,
+      "isCertified": true
+    }
+  ],
+  "categories": [
+    { "name": "私人飞机", "count": 1, "avgPrice": 70000000 },
+    { "name": "商务机", "count": 1, "avgPrice": 72500000 },
+    { "name": "轻型飞机", "count": 5, "avgPrice": 14360000 },
+    { "name": "直升机", "count": 1, "avgPrice": 17000000 },
+    { "name": "豪华客机", "count": 1, "avgPrice": 100000000 }
+  ],
+  "manufacturers": [
+    "Gulfstream Aerospace",
+    "Bombardier", 
+    "Textron Aviation",
+    "Airbus Helicopters",
+    "Boeing",
+    "Embraer",
+    "Honda Aircraft",
+    "Pilatus Aircraft"
+  ],
+  "services": [
+    {
+      "name": "维护服务",
+      "description": "全球维护网络支持",
+      "icon": "🛠️",
+      "features": ["定期维护", "紧急维修", "零件供应", "技术支持"]
+    },
+    {
+      "name": "飞行培训",
+      "description": "专业飞行员培训课程",
+      "icon": "✈️",
+      "features": ["初始培训", "复训课程", "模拟器训练", "认证考试"]
+    },
+    {
+      "name": "机库租赁",
+      "description": "全美机库设施租赁",
+      "icon": "🏢",
+      "features": ["长期租赁", "短期停放", "维护设施", "安全保障"]
+    },
+    {
+      "name": "法规咨询",
+      "description": "FAA法规专业咨询",
+      "icon": "📋",
+      "features": ["注册服务", "合规检查", "文件处理", "法律支持"]
+    }
+  ],
+  "marketInsights": {
+    "yearlyGrowth": 12.5,
+    "totalListings": 2847,
+    "averageTransactionDays": 45,
+    "averagePrice": 45000000,
+    "topCategories": ["私人飞机", "商务机", "直升机"]
+  },
+  "meta": {
+    "totalAircraft": 8,
+    "lastUpdated": "2024-01-15T12:00:00Z",
+    "version": "1.0"
+  }
+}

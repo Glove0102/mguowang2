@@ -1,0 +1,282 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Glock 19 Gen5",
+      "category": "手枪",
+      "manufacturer": "Glock",
+      "caliber": "9mm",
+      "price": 599,
+      "originalPrice": 699,
+      "description": "可靠性极高的执法用枪，适合自卫和射击运动。采用最新Gen5技术，改进了扳机和握把设计。",
+      "specifications": {
+        "barrel_length": "4.02英寸",
+        "overall_length": "7.36英寸",
+        "height": "5.04英寸",
+        "width": "1.26英寸",
+        "weight": "23.65盎司",
+        "capacity": "15+1发",
+        "action": "击针击发",
+        "frame_material": "聚合物",
+        "finish": "黑色"
+      },
+      "features": [
+        "9mm口径",
+        "15发弹夹",
+        "聚合物框架",
+        "原厂保修",
+        "可靠击发系统",
+        "模块化后瞄准器"
+      ],
+      "rating": 4.9,
+      "reviews": 2847,
+      "inStock": true,
+      "isHot": true,
+      "images": ["glock19_1.jpg", "glock19_2.jpg"],
+      "availability": "现货",
+      "shipping": "2-3工作日"
+    },
+    {
+      "id": 2,
+      "name": "Smith & Wesson M&P Shield",
+      "category": "手枪",
+      "manufacturer": "Smith & Wesson",
+      "caliber": "9mm",
+      "price": 479,
+      "originalPrice": 529,
+      "description": "紧凑型隐蔽携带手枪，轻便易控，是个人防护的理想选择。",
+      "specifications": {
+        "barrel_length": "3.1英寸",
+        "overall_length": "6.1英寸",
+        "height": "4.6英寸",
+        "width": "0.95英寸",
+        "weight": "20.8盎司",
+        "capacity": "8+1发",
+        "action": "击针击发",
+        "frame_material": "聚合物",
+        "finish": "黑色"
+      },
+      "features": [
+        "超薄设计",
+        "8发容量",
+        "三点式安全系统",
+        "可更换背带",
+        "夜光瞄准器"
+      ],
+      "rating": 4.7,
+      "reviews": 1923,
+      "inStock": true,
+      "isHot": false
+    },
+    {
+      "id": 3,
+      "name": "AR-15 Sport II",
+      "category": "步枪",
+      "manufacturer": "Smith & Wesson",
+      "caliber": "5.56/.223",
+      "price": 899,
+      "originalPrice": 1099,
+      "description": "美国最受欢迎的现代运动步枪，模块化设计，适合射击运动和狩猎。",
+      "specifications": {
+        "barrel_length": "16英寸",
+        "overall_length": "35英寸",
+        "weight": "6.5磅",
+        "capacity": "30发",
+        "action": "半自动",
+        "stock": "可调节",
+        "rail_system": "皮卡汀尼导轨"
+      },
+      "features": [
+        "5.56/.223口径",
+        "30发弹夹",
+        "可调节枪托",
+        "皮卡汀尼导轨",
+        "铬钼钒钢枪管",
+        "可拆卸携带手柄"
+      ],
+      "rating": 4.8,
+      "reviews": 1923,
+      "inStock": true,
+      "isHot": true
+    },
+    {
+      "id": 4,
+      "name": "Remington 870 Express",
+      "category": "霰弹枪",
+      "manufacturer": "Remington",
+      "caliber": "12 Gauge",
+      "price": 449,
+      "originalPrice": 549,
+      "description": "经典泵动式霰弹枪，狩猎和家庭防卫的首选。可靠性和耐用性享誉全球。",
+      "specifications": {
+        "barrel_length": "28英寸",
+        "overall_length": "48.5英寸",
+        "weight": "7.25磅",
+        "capacity": "4+1发",
+        "action": "泵动式",
+        "chamber": "3英寸",
+        "choke": "改进圆筒型"
+      },
+      "features": [
+        "12号霰弹",
+        "4+1发装填",
+        "钢制机身",
+        "木质枪托",
+        "双动臂杆",
+        "交叉栓保险"
+      ],
+      "rating": 4.7,
+      "reviews": 1456,
+      "inStock": true,
+      "isHot": false
+    },
+    {
+      "id": 5,
+      "name": "Ruger 10/22",
+      "category": "步枪",
+      "manufacturer": "Ruger",
+      "caliber": ".22 LR",
+      "price": 309,
+      "originalPrice": 349,
+      "description": "经典的.22口径半自动步枪，是射击运动入门和小型狩猎的完美选择。",
+      "specifications": {
+        "barrel_length": "18.5英寸",
+        "overall_length": "37英寸",
+        "weight": "5磅",
+        "capacity": "10发",
+        "action": "半自动",
+        "stock": "合成材料",
+        "trigger": "单级扳机"
+      },
+      "features": [
+        ".22 LR口径",
+        "10发旋转弹夹",
+        "自动最后一发挂机",
+        "交叉栓保险",
+        "不锈钢枪管",
+        "合成枪托"
+      ],
+      "rating": 4.6,
+      "reviews": 3247,
+      "inStock": true,
+      "isHot": false
+    },
+    {
+      "id": 6,
+      "name": "Sig Sauer P320",
+      "category": "手枪",
+      "manufacturer": "Sig Sauer",
+      "caliber": "9mm",
+      "price": 679,
+      "originalPrice": 749,
+      "description": "模块化手枪系统，美军制式装备。可根据需要更换不同尺寸的框架和枪管。",
+      "specifications": {
+        "barrel_length": "4.7英寸",
+        "overall_length": "8.2英寸",
+        "height": "5.5英寸",
+        "width": "1.3英寸",
+        "weight": "29.4盎司",
+        "capacity": "17+1发",
+        "action": "击针击发",
+        "frame_material": "聚合物"
+      },
+      "features": [
+        "9mm口径",
+        "17发弹夹",
+        "模块化设计",
+        "击针保险",
+        "夜光瞄准器",
+        "可更换握把模块"
+      ],
+      "rating": 4.8,
+      "reviews": 987,
+      "inStock": false,
+      "isHot": false
+    }
+  ],
+  "accessories": [
+    {
+      "id": 101,
+      "name": "Leupold VX-5HD 瞄准镜",
+      "category": "配件",
+      "price": 899,
+      "originalPrice": 999,
+      "description": "高端光学瞄准镜，适合远程精准射击。HD光学系统提供清晰明亮的视野。",
+      "features": [
+        "3-15x44倍率",
+        "30mm主管",
+        "防水防雾",
+        "氮气填充",
+        "终身保修"
+      ],
+      "rating": 4.9,
+      "reviews": 654,
+      "inStock": true
+    },
+    {
+      "id": 102,
+      "name": "Magpul PMAG 30发弹夹",
+      "category": "配件",
+      "price": 15,
+      "originalPrice": 19,
+      "description": "高可靠性聚合物弹夹，适用于AR-15平台。军用级别的耐用性。",
+      "features": [
+        "30发容量",
+        "聚合物材质",
+        "防跌落设计",
+        "可视弹药窗",
+        "军规标准"
+      ],
+      "rating": 4.8,
+      "reviews": 2156,
+      "inStock": true
+    }
+  ],
+  "ammunition": [
+    {
+      "id": 201,
+      "name": "Federal Premium 9mm弹药",
+      "category": "弹药",
+      "price": 89,
+      "originalPrice": 109,
+      "description": "高质量训练和防卫弹药，500发盒装。一致性和可靠性经过严格测试。",
+      "specifications": {
+        "caliber": "9mm",
+        "bullet_weight": "115格令",
+        "bullet_type": "FMJ全金属弹头",
+        "case_material": "黄铜弹壳",
+        "primer": "非腐蚀性底火",
+        "quantity": "500发"
+      },
+      "features": [
+        "FMJ全金属弹头",
+        "115格令",
+        "黄铜弹壳",
+        "工厂装填",
+        "一致性保证"
+      ],
+      "rating": 4.5,
+      "reviews": 432,
+      "inStock": true
+    }
+  ],
+  "categories": [
+    { "name": "手枪", "count": 3, "description": "个人防护和射击运动用手枪" },
+    { "name": "步枪", "count": 2, "description": "狩猎和射击运动用步枪" },
+    { "name": "霰弹枪", "count": 1, "description": "狩猎和防卫用霰弹枪" },
+    { "name": "配件", "count": 25, "description": "瞄准镜、弹夹等配件" },
+    { "name": "弹药", "count": 15, "description": "各种口径弹药" }
+  ],
+  "manufacturers": [
+    "Glock", "Smith & Wesson", "Ruger", "Remington", "Sig Sauer", "Colt", "Springfield Armory"
+  ],
+  "legal_notice": {
+    "title": "重要法律声明",
+    "content": "所有枪械销售必须严格遵守联邦、州和地方法律法规。购买者必须年满21岁（手枪）或18岁（长枪），通过联邦背景调查，无犯罪记录，具备合法持枪资格。本店为FFL持证经销商，所有交易均按法律程序执行。"
+  },
+  "meta": {
+    "totalProducts": 6,
+    "lastUpdated": "2024-01-15T12:00:00Z",
+    "version": "1.0"
+  }
+}
