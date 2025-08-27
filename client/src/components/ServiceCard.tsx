@@ -25,18 +25,18 @@ export function ServiceCard({
 }: ServiceCardProps) {
   return (
     <div 
-      className="service-card bg-card p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer border border-border" 
+      className="service-card p-4 rounded-lg cursor-pointer" 
       onClick={onClick}
       data-testid={testId}
     >
       <div className="text-center">
-        <div className={`${bgColor} p-3 rounded-full w-16 h-16 mx-auto mb-3 flex items-center justify-center`}>
+        <div className={`${bgColor} p-3 rounded-full w-16 h-16 mx-auto mb-3 flex items-center justify-center shadow-lg`}>
           <i className={`${icon} ${iconColor} text-xl`}></i>
         </div>
-        <h3 className="font-bold text-sm mb-1">{title}</h3>
-        <p className="text-xs text-muted-foreground">{description}</p>
+        <h3 className="font-bold text-sm mb-1 text-gray-800">{title}</h3>
+        <p className="text-xs text-gray-600">{description}</p>
         {badge && (
-          <div className={`mt-2 text-xs bg-${badgeColor}-100 text-${badgeColor}-700 px-2 py-1 rounded`}>
+          <div className={`mt-2 text-xs vip-badge px-2 py-1 rounded-full font-bold`}>
             {badge}
           </div>
         )}
