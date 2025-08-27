@@ -1,0 +1,67 @@
+[
+  {
+    "id": "match-001",
+    "teams": ["LA Eagles", "NY Giants"],
+    "sport": "NFL",
+    "matchTime": "周日 13:00",
+    "stadium": "洛杉矶纪念体育场",
+    "odds": {
+      "LA Eagles": 1.8,
+      "NY Giants": 2.2
+    },
+    "status": "upcoming",
+    "description": "NFC西区争夺战，两队实力接近"
+  },
+  {
+    "id": "match-002",
+    "teams": ["Boston Celtics", "Miami Heat"],
+    "sport": "NBA",
+    "matchTime": "周六 20:30",
+    "stadium": "TD花园球馆",
+    "odds": {
+      "Boston Celtics": 1.6,
+      "Miami Heat": 2.4
+    },
+    "status": "upcoming",
+    "description": "东部强强对话，主场优势明显"
+  },
+  {
+    "id": "match-003",
+    "teams": ["Chicago Bulls", "Golden State Warriors"],
+    "sport": "NBA",
+    "matchTime": "周日 21:00",
+    "stadium": "联合中心球馆",
+    "odds": {
+      "Chicago Bulls": 2.5,
+      "Golden State Warriors": 1.5
+    },
+    "status": "upcoming",
+    "description": "勇士客场作战，公牛力争主场胜利"
+  },
+  {
+    "id": "match-004",
+    "teams": ["Dallas Cowboys", "Green Bay Packers"],
+    "sport": "NFL",
+    "matchTime": "周一 20:15",
+    "stadium": "AT&T体育场",
+    "odds": {
+      "Dallas Cowboys": 1.9,
+      "Green Bay Packers": 1.9
+    },
+    "status": "upcoming",
+    "description": "NFC传统强队对决，势均力敌"
+  },
+  {
+    "id": "match-005",
+    "teams": ["Tampa Bay Lightning", "Boston Bruins"],
+    "sport": "NHL",
+    "matchTime": "周六 19:00",
+    "stadium": "安利球馆",
+    "odds": {
+      "Tampa Bay Lightning": 2.1,
+      "Boston Bruins": 1.7
+    },
+    "status": "upcoming",
+    "description": "东部冰球强队较量，防守见长"
+  }
+]

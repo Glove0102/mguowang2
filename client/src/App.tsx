@@ -20,6 +20,7 @@ import CreatorPage from "@/pages/CreatorPage";
 import ModelsPage from "@/pages/ModelsPage";
 import FunPage from "@/pages/FunPage";
 import VehiclesPage from "@/pages/VehiclesPage";
+import BettingPage from "@/pages/BettingPage";
 import { TopProgressBar } from "@/components/TopProgressBar";
 import { BottomNavigation } from "@/components/BottomNavigation";
 
@@ -48,6 +49,7 @@ function AuthenticatedApp() {
           <Route path="/models" component={ModelsPage} />
           <Route path="/fun" component={FunPage} />
           <Route path="/vehicles" component={VehiclesPage} />
+          <Route path="/betting" component={BettingPage} />
           <Route path="/admin" component={AdminPage} />
           <Route component={NotFound} />
         </Switch>

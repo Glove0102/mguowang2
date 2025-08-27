@@ -47,6 +47,13 @@ async function readVehiclesFile() {
   return JSON.parse(data);
 }
 
+// Helper function to read sports data
+async function readSportsFile() {
+  const filePath = path.join(process.cwd(), 'data', 'sports.json');
+  const data = await fs.readFile(filePath, 'utf-8');
+  return JSON.parse(data);
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Authentication
   app.post("/api/auth/login", async (req, res) => {
@@ -110,6 +117,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(vehicles);
     } catch (error) {
       res.status(500).json({ message: "获取车辆信息失败" });
+    }
+  });
+
+  // Serve sports data
+  app.get("/api/sports", async (req, res) => {
+    try {
+      const sports = await readSportsFile();
+      res.json(sports);
+    } catch (error) {
+      res.status(500).json({ message: "获取体育赛事失败" });
     }
   });
 
@@ -407,6 +424,80 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(reward);
     } catch (error) {
       res.status(500).json({ message: "签到失败" });
+    }
+  });
+
+  // Sports betting endpoint
+  app.post("/api/sports/bet", async (req, res) => {
+    try {
+      const { matchId, selectedTeam, betAmount } = req.body;
+      
+      const user = await storage.getUserByUsername("americauser");
+      if (!user) {
+        return res.status(404).json({ message: "用户未找到" });
+      }
+
+      if (user.balance < betAmount) {
+        return res.status(400).json({ message: "余额不足" });
+      }
+
+      // Deduct bet amount
+      await storage.updateUser(user.id, { balance: user.balance - betAmount });
+
+      // Simulate match result (randomly pick winner)
+      const sports = await readSportsFile();
+      const match = sports.find((m: any) => m.id === matchId);
+      
+      if (!match) {
+        return res.status(404).json({ message: "比赛未找到" });
+      }
+
+      const winner = match.teams[Math.floor(Math.random() * 2)];
+      const userWon = winner === selectedTeam;
+      
+      let winnings = 0;
+      let xpGain = 10; // Base XP for participating
+
+      if (userWon) {
+        const odds = match.odds[selectedTeam];
+        winnings = Math.floor(betAmount * odds);
+        xpGain = 50;
+        
+        // Add winnings to balance
+        await storage.updateUser(user.id, { 
+          balance: user.balance - betAmount + winnings,
+          xp: user.xp + xpGain
+        });
+        
+        await storage.createActivity({
+          userId: user.id,
+          type: "sports_bet_win",
+          description: `${selectedTeam} 获胜，赢得 $${winnings}`,
+          xpEarned: xpGain,
+          dollarEarned: winnings - betAmount
+        });
+      } else {
+        await storage.updateUser(user.id, { xp: user.xp + xpGain });
+        
+        await storage.createActivity({
+          userId: user.id,
+          type: "sports_bet_loss",
+          description: `${selectedTeam} 失败，损失 $${betAmount}`,
+          xpEarned: xpGain,
+          dollarEarned: -betAmount
+        });
+      }
+
+      res.json({
+        userWon,
+        winner,
+        winnings,
+        xpGain,
+        selectedTeam,
+        match: match.teams.join(" vs ")
+      });
+    } catch (error) {
+      res.status(500).json({ message: "投注失败" });
     }
   });
 

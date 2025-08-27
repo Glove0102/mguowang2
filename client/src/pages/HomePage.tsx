@@ -198,6 +198,30 @@ export default function HomePage() {
           />
         </div>
 
+        {/* Interactive Games Section */}
+        <div className="space-y-4">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-red-600 mb-2" data-testid="text-games-title">
+              🎮 互动游戏区
+            </h2>
+            <p className="text-muted-foreground">参与游戏赢取奖励，提升等级解锁更多功能</p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <ServiceCard
+              icon="fas fa-football-ball"
+              title="Sports Betting"
+              description="体育博彩"
+              badge="高奖励"
+              badgeColor="green"
+              bgColor="bg-green-100"
+              iconColor="text-green-600"
+              onClick={() => handleServiceClick('/betting', 20, 15, 'betting_visit', '访问体育博彩')}
+              testId="card-betting"
+            />
+          </div>
+        </div>
+
         {/* Premium Services (Level-Locked) */}
         <div className="bg-gradient-to-r from-secondary to-yellow-400 p-6 rounded-xl text-white">
           <h2 className="text-xl font-bold mb-4 flex items-center">
