@@ -89,6 +89,13 @@ async function readWeatherFile() {
   return JSON.parse(data);
 }
 
+// Helper function to read festivals data
+async function readFestivalsFile() {
+  const filePath = path.join(process.cwd(), 'data', 'festivals.json');
+  const data = await fs.readFile(filePath, 'utf-8');
+  return JSON.parse(data);
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Authentication
   app.post("/api/auth/login", async (req, res) => {
@@ -212,6 +219,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(weather);
     } catch (error) {
       res.status(500).json({ message: "获取天气信息失败" });
+    }
+  });
+
+  // Serve festivals data
+  app.get("/api/festivals", async (req, res) => {
+    try {
+      const festivals = await readFestivalsFile();
+      res.json(festivals);
+    } catch (error) {
+      res.status(500).json({ message: "获取节庆信息失败" });
     }
   });
 
