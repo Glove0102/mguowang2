@@ -14,6 +14,8 @@ export function BottomNavigation() {
     { path: '/news', icon: 'fas fa-compass', label: '探索' },
     { path: '/lottery', icon: 'fas fa-dice', label: '抽奖', notification: true },
     { path: '/dating', icon: 'fas fa-comment', label: '消息', badge: 3, requiresLevel: 2 },
+    { path: '/creators', icon: 'fas fa-star', label: '创作者', requiresLevel: 2 },
+    { path: '/models', icon: 'fas fa-camera', label: '模特', requiresLevel: 2 },
     { path: '/profile', icon: 'fas fa-user', label: '我的' }
   ];
 
@@ -32,7 +34,7 @@ export function BottomNavigation() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-card border-t border-border shadow-lg z-50">
-      <div className="grid grid-cols-5 max-w-6xl mx-auto">
+      <div className="grid grid-cols-7 max-w-6xl mx-auto">
         {navItems.map((item) => (
           <Link key={item.path} href={item.path}>
             <button 
