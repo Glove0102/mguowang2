@@ -33,6 +33,13 @@ async function readModelsFile() {
   return JSON.parse(data);
 }
 
+// Helper function to read fun content data
+async function readFunFile() {
+  const filePath = path.join(process.cwd(), 'data', 'fun.json');
+  const data = await fs.readFile(filePath, 'utf-8');
+  return JSON.parse(data);
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Authentication
   app.post("/api/auth/login", async (req, res) => {
@@ -76,6 +83,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(models);
     } catch (error) {
       res.status(500).json({ message: "获取模特信息失败" });
+    }
+  });
+
+  // Serve fun content data
+  app.get("/api/fun", async (req, res) => {
+    try {
+      const funContent = await readFunFile();
+      res.json(funContent);
+    } catch (error) {
+      res.status(500).json({ message: "获取娱乐内容失败" });
     }
   });
 

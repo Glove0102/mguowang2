@@ -1,0 +1,102 @@
+[
+  {
+    "id": "joke-001",
+    "type": "joke",
+    "title": "为什么程序员喜欢黑暗？",
+    "content": "因为光明会带来bug！",
+    "category": "科技幽默",
+    "likes": 1247,
+    "createdAt": "2024-01-15"
+  },
+  {
+    "id": "video-001",
+    "type": "video",
+    "title": "美国人第一次吃中国菜的反应",
+    "content": "https://example.com/funny-chinese-food-reaction",
+    "thumbnail": "🥢",
+    "duration": "3:24",
+    "views": 892456,
+    "category": "文化差异",
+    "createdAt": "2024-01-14"
+  },
+  {
+    "id": "joke-002",
+    "type": "joke",
+    "title": "医生和程序员的区别",
+    "content": "医生的错误会埋在地下，程序员的错误会显示在屏幕上。",
+    "category": "职业幽默",
+    "likes": 2156,
+    "createdAt": "2024-01-13"
+  },
+  {
+    "id": "video-002",
+    "type": "video",
+    "title": "当你告诉父母你在做网站时",
+    "content": "https://example.com/parents-website-confusion",
+    "thumbnail": "👨‍💻",
+    "duration": "2:15",
+    "views": 567890,
+    "category": "家庭幽默",
+    "createdAt": "2024-01-12"
+  },
+  {
+    "id": "joke-003",
+    "type": "joke",
+    "title": "为什么WiFi密码这么难记？",
+    "content": "因为路由器想要测试你的记忆力，结果发现你连自己的生日都记不住。",
+    "category": "生活幽默",
+    "likes": 3421,
+    "createdAt": "2024-01-11"
+  },
+  {
+    "id": "video-003",
+    "type": "video",
+    "title": "老外学中文绕口令挑战",
+    "content": "https://example.com/chinese-tongue-twisters",
+    "thumbnail": "🗣️",
+    "duration": "4:56",
+    "views": 1234567,
+    "category": "语言学习",
+    "createdAt": "2024-01-10"
+  },
+  {
+    "id": "joke-004",
+    "type": "joke",
+    "title": "编程语言的真相",
+    "content": "Java：一次编写，到处调试。Python：生活苦短，我用Python。JavaScript：我也不知道为什么能工作。",
+    "category": "程序员幽默",
+    "likes": 5678,
+    "createdAt": "2024-01-09"
+  },
+  {
+    "id": "video-004",
+    "type": "video",
+    "title": "美国人vs中国人：购物方式大不同",
+    "content": "https://example.com/shopping-culture-differences",
+    "thumbnail": "🛒",
+    "duration": "5:33",
+    "views": 789123,
+    "category": "文化对比",
+    "createdAt": "2024-01-08"
+  },
+  {
+    "id": "joke-005",
+    "type": "joke",
+    "title": "为什么键盘上的字母不按顺序排列？",
+    "content": "因为如果按顺序排列，你打字的时候会唱ABC，效率太低了。",
+    "category": "科技冷知识",
+    "likes": 2789,
+    "createdAt": "2024-01-07"
+  },
+  {
+    "id": "video-005",
+    "type": "video",
+    "title": "程序员的一天：期望vs现实",
+    "content": "https://example.com/programmer-day-expectation-reality",
+    "thumbnail": "💻",
+    "duration": "6:12",
+    "views": 445566,
+    "category": "职场生活",
+    "createdAt": "2024-01-06"
+  }
+]

@@ -18,6 +18,7 @@ import LotteryPage from "@/pages/LotteryPage";
 import AdminPage from "@/pages/AdminPage";
 import CreatorPage from "@/pages/CreatorPage";
 import ModelsPage from "@/pages/ModelsPage";
+import FunPage from "@/pages/FunPage";
 import { TopProgressBar } from "@/components/TopProgressBar";
 import { BottomNavigation } from "@/components/BottomNavigation";
 
@@ -44,6 +45,7 @@ function AuthenticatedApp() {
           <Route path="/lottery" component={LotteryPage} />
           <Route path="/creators" component={CreatorPage} />
           <Route path="/models" component={ModelsPage} />
+          <Route path="/fun" component={FunPage} />
           <Route path="/admin" component={AdminPage} />
           <Route component={NotFound} />
         </Switch>
